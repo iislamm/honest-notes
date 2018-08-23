@@ -1,0 +1,54 @@
+<nav class="navbar-custom">
+  <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" id="collapse-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/logo.png" alt="Honest Notes"></a>
+  </div>
+  <div class="collapse-nav" id="co1lapsed-nav">
+
+    <div class="collapsed-nav-content">
+      
+      <div class="navbar-settings">
+        <a class="profile-picture" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/profile']"><img src="{{avatarUrl}}" alt="Profile Picture"></a>
+        <div class="settings">
+          <a [routerLink]="['/settings']">
+            <fa-icon [icon]="faCog"></fa-icon>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="search">
+        <input type="text" (ngModel)="search" class="form-control" placeholder="Search...">
+      </div>
+
+      <div class="nav-body">
+        <div class="nav-item">
+          <a (click)="updateUnread()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/']">Home</a>
+        </div>
+        
+        <div class="nav-item">
+          <a (click)="updateUnread()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/messages']">Messages <div *ngIf="unseen != 0" class="unread">{{unseen}}</div></a>
+        </div>
+
+        <div class="nav-item">
+          <a (click)="updateUnread()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/feedback']">Send Feedback</a>
+        </div>
+
+        <div class="nav-item">
+          <a (click)="logOut()" href="#">Log out</a>
+        </div>
+
+      </div>
+
+      <div class="footer">
+        <p>All rights reserved to <a href="http://islamelbanna.info" target="_blank">Islam Mohamed</a></p>
+        <a href="#">Terms of use</a>
+      </div>
+    </div>
+  </div>
+</nav>

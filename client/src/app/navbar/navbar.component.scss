@@ -1,0 +1,163 @@
+$mainColor: #566BFF;
+$navPadding: 15%;
+
+.navbar-custom {
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 25%;
+    background-color: #333;
+    color: #fff;
+    top: 0;
+
+    .navbar-header {
+        .navbar-brand {
+            text-align: center;
+
+            img {
+                width: 80%;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .navbar-settings {
+        padding-top: 75px;
+        padding-left: $navPadding;
+        padding-right: $navPadding;
+        height: 75px;
+    
+        .profile-picture {
+            float: left;
+            margin-top: 3px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            img {
+                width: 65px;
+                height: 65px;
+                border-radius: 50%;
+            }
+
+            &.active {
+                border: 2px solid #556bff;
+            }
+        }
+    
+            // width: 100%;
+            .settings {
+                background-color: transparent;
+                box-shadow: none;
+                border: none;
+                float: right;
+                transition: all 1s;
+        
+                fa-icon {
+                    font-size: 55px;
+                    color: #fff;
+                }
+        
+                &:hover, &:focus {
+                    transform: rotate(180deg);
+                    transition: all 1s;
+                }
+
+            .dropdown-menu {
+                position: static;
+                float: right;
+                width: 100%;
+                background-color: #333;
+                box-shadow: 0px 0px 5px 0px #111;
+                margin-bottom: 20px;
+                a  {
+                    color: #eee;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+
+                a:hover, a:focus {
+                    background-color: #555;
+                }
+            }
+        }  
+    }
+
+    .search {
+        margin-top: 20px;
+        .form-control {
+            background-color: #555;
+            color: #fff;
+            font-size: 18px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            box-shadow: -8px 0px 9px 0px #111;
+
+            &:focus {
+                box-shadow: -8px 10px 9px 0px #111;    
+            }
+        }
+    }
+
+    .nav-body {
+        margin-top: 30px;
+        
+        .nav-item {
+            // margin: 10px 0;
+            width: 100%;
+
+            a {
+                padding: 10px $navPadding;
+                width: 100%;
+                color: #ddd;
+                font-size: 16px;
+                font-weight: bold;
+                display: block;
+                &:hover, &:focus, &.active {
+                    color: #eee;
+                    background-color: #222;
+                    text-decoration: none;
+                    
+                }
+
+                .unread {
+                    font-size: 22px;
+                }
+            }
+
+            .unread {
+                width: 33px;
+                height: 33px;
+                background-color: #CB1616;
+                display: inline-block;
+                text-align: center;
+                vertical-align: middle;
+                padding-top: 0;
+                border-radius: 50%;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .collapsed-nav-content {
+        position: relative;
+        height: 93vh;
+    }
+    .footer {
+        position: absolute;
+        
+        bottom: 20px;
+        left: 0;
+        padding: 20px;
+        font-size: 16px;
+        p a, p a:hover, p a:focus {
+            color: $mainColor
+        }
+
+        >a, >a:focus, >a:hover {
+            color: #ddd;
+            text-decoration: underline;
+        }
+    }
+}
+
+@import 'navbar.media';

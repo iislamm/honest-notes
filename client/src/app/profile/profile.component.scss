@@ -1,0 +1,33 @@
+.background {
+    height: 200px;
+    width: 100%;
+    background-color: #556BFF;
+}
+
+.profile {
+    margin-top: -100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    img {
+        width: 200px;
+        border-radius: 50%;
+    }
+    .name {
+        font-weight: bold;
+        font-size: 32px;
+        margin-top: 10px;
+    }
+
+    .bio {
+        width: 50%;
+        margin: auto;
+    }
+}
+
+.not-found {
+    margin-top: 10%;
+    h3 {
+        font-size: 12em;
+    }
+}

@@ -1,0 +1,11 @@
+@media (min-width: 901px) {
+    .page-content {
+        margin-left: 25%;
+    }
+}
+
+@media (max-width: 900px) {
+    .page-content {
+        margin-top: 55px;
+    }
+}

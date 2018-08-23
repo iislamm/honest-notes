@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Password reset</title>
+
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+        .header {
+            height: 90px;
+            width: 100%;
+            background-color: #333;
+        }
+
+        .header .logo {
+            width: 292px;
+            margin-left: 40px;
+            margin-top: 25px;
+        }
+
+        .page-header {
+            font-size: 3em;
+            color: #333;
+            text-align: center;
+
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-left: 4%;
+            max-width: 90%;
+        }
+
+        a, a:hover, a:focus {
+            text-decoration: none;
+            color: #566BFF;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <div class="header">
+        <img class="logo" src="http://islamelbanna.info/data/honest-notes/logo.png" alt="Honest Notes">
+    </div>
+    <h2 class="page-header">Password reset</h2>
+    <p>Hello ${user.fullname}, you recently asked to reset your password. <br> <br> To reset you password please refer to <a href="http://localhost:3000/users/reset-password/${user._id}/${user.passwordReset.key}">this link</a>. <br><br>
+         or visit this link from your browser http://localhost:3000/users/reset-password/${user._id}/${user.passwordReset.key}
+         <br><br><br>
+         Best Regards, <br>
+         Honest Notes team.
+        </p>
+</body>
+</html>

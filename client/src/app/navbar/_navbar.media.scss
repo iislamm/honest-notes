@@ -1,0 +1,53 @@
+@media screen and (max-width: 900px) {
+    .navbar-custom {
+        width: 100%;
+        height: 55px;
+
+        .navbar-header {
+            button {
+                float: left;
+                .icon-bar {
+                    background-color: #fff;
+                }
+                
+            }
+            .navbar-brand {
+                float: right;
+                width: 80%;
+
+                img {
+                    width: auto;
+                    height: 30px;
+                    float: right;
+                }
+            }
+        }
+    }
+    .collapse-nav {
+        width: 80%;
+        height: 93vh;
+        background-color: #333;
+        padding-top: 0px;
+        position: relative;
+        left: -80%;
+        overflow: auto;
+    }
+
+    .navbar-settings {
+        margin-top: 5px !important;
+        padding-top: 5px !important;
+        background-color: #333;
+        .profile-picture {
+            img {
+                width: 50px !important;
+                height: 50px !important;
+            }
+
+            
+        }
+
+        fa-icon {
+            font-size: 42px !important;
+        }
+    }
+}

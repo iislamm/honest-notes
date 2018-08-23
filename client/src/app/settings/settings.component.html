@@ -1,0 +1,53 @@
+<div class="settings-container">
+  <h3 class="page-title">Account Settings</h3>
+  <div class="text-center">
+    <flash-messages></flash-messages>
+  </div>
+  <div class="col-sm-6">
+    <div class="data">
+      <span class="title">Name: </span>
+      <input type="text" class="form-control read" name="fullname" [(ngModel)]="fullname" >
+    </div>
+    <div class="data">
+      <span class="title">E-mail: </span>
+      <input type="text" class="form-control read" [(ngModel)]="email">
+    </div>
+    <div class="data">
+      <span class="title">Bio: </span>
+      <textarea class="form-control read" rows="2" [(ngModel)]="bio" placeholder="Tap to add bio"></textarea>
+    </div>
+  </div>
+  
+  <div class="col-sm-6">
+    <div class="data">
+      <!-- <span class="title">Profile Picture: </span> -->
+      <div class="form-control file-control btn-default">
+          <span id="fileUploadLabel">Edit your profile picture</span>
+        <input (change)="onFileSelected($event)" type="file" name="avatar" id="avatar" onchange="showFileName()" required>
+      </div>
+    </div>
+
+    <div class="data">
+      <div class="btn-default form-control" (click)="onChangePasswordClick()">Change Password</div>
+    </div>
+
+    <div class="password-form" *ngIf="changePassword === true">
+      <div class="form-group">
+        <input type="password" name="current-password" id="current-password" class="form-control" placeholder="Current password">
+      </div>
+
+      <div class="form-group">
+        <input type="password" name="new-password" id="new-password" class="form-control" placeholder="New password">
+      </div>
+
+        <div class="form-group">
+          <input type="password" name="verify-password" id="verify-password" class="form-control" placeholder="Verify password">
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+<div class="text-center">
+  <button class="btn-default" (click)="onSave()">Save</button>
+</div>

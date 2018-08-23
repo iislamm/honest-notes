@@ -1,0 +1,9 @@
+form {
+    width: 90%;
+    margin: auto;
+}
+
+.modal-footer {
+    text-align: center;
+    border: none;
+}

@@ -1,0 +1,22 @@
+<div class="cards-container">
+  <div class="status text-center">
+    <span [ngClass]="{'active': status === 'recieved'}" (click)="changeStatus('recieved')">Recieved</span> | <span [ngClass]="{'active': status === 'sent'}" (click)="changeStatus('sent')">Sent</span>
+  </div>
+
+  <div *ngIf="status === 'recieved'" class="recieved">
+    <div class="card" *ngFor="let message of recieved">
+      <div class="content">{{message.content}}</div>
+      <div class="date">{{message.sendDate.slice(0,-9).replace('T', ' at ')}}</div>
+    </div>
+  </div>
+
+  <div *ngIf="status === 'sent'" class="sent">
+      <div class="card" *ngFor="let message of sent">
+        <div class="content">{{message.content}}</div>
+        <div class="date">To: {{message.recieverName}}</div>
+        <div class="date">{{message.sendDate.slice(0,-9).replace('T', ' at ')}}</div>
+      </div>
+    </div>
+  
+
+</div>

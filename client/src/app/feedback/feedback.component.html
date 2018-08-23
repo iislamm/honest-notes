@@ -1,0 +1,20 @@
+<div *ngIf="sent === false">
+  <div class="header text-center">
+    <h3>We would like to hear from you!</h3>
+    <p>Your feedback helps us to better service.</p>
+  </div>
+
+  <div class="content text-center">
+    <flash-messages></flash-messages>
+    <textarea [(ngModel)]="message" rows="10" class="form-control" placeholder="Tell us your feedback"></textarea>
+    <br>
+    <button (click)="onSend()" class="btn-default">Send</button>
+  </div>
+</div>
+
+<div *ngIf="sent === true">
+    <div class="header text-center">
+        <h3>Thank you!</h3>
+        <p>Your message has been sent</p>
+      </div>
+</div>

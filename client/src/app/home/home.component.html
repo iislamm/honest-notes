@@ -1,0 +1,52 @@
+<nav class="nav navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand"><img src="./assets/logo.png" alt="Honest Notes"></a>
+    </div>
+  </div>
+</nav>
+
+<div class="landing">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="details">
+          <h3 class="title">Recieve anonymous feedback to improve yourself</h3>
+          <p>Having anynomys feedback is the best way to insure its honesty, and to help improving yourself.</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="details">
+          <h3 class="title">Send anonymus confessions  </h3>
+          <p>Send anynomus confessions for the people you care about.</p>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+          <div class="enter">
+            <button (click)="setStatus('login')" class="button" data-toggle="modal" data-target="#loginModal">Login</button>
+            <button (click)="setStatus('register')" class="button" data-toggle="modal" data-target="#loginModal">Sign up</button>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Enter Website">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button (click)="setStatus('login')" [ngClass]="{'active': status === 'login'}" class="modalBtn">Sign in</button>
+          <button (click)="setStatus('register')" [ngClass]="{'active': status === 'register'}"  class="modalBtn">Sign up</button>
+        </div>
+        <div class="modal-body">
+          <app-login *ngIf="status === 'login'"></app-login>
+          <app-register *ngIf="status === 'register'"></app-register>
+        </div>
+
+      </div>
+    </div>
+  </div>
