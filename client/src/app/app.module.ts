@@ -28,6 +28,10 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 
+export function apiUrl() {
+  return "http://localhost:3000/";
+}
+
 export function tokenGetter() {
   return localStorage.getItem('token');
 }

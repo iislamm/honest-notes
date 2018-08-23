@@ -8,7 +8,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from './auth.service';
 import { pipe } from '@angular/core/src/render3/pipe';
 
-const url = "http://honest-notes.herokuapp.com/";
+import { apiUrl } from '../app.module';
+const url = apiUrl();
 
 @Injectable({
   providedIn: 'root'

@@ -7,7 +7,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { User, OldUser, newUser } from '../user';
 
-const url = "http://honest-notes.herokuapp.com/";
+import { apiUrl } from '../app.module';
+const url = apiUrl();
 
 @Injectable({
   providedIn: 'root'

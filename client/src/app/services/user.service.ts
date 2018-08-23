@@ -4,7 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { map, tap } from 'rxjs/operators';
 
-const url = "http://localhost:3000/";
+import { apiUrl } from '../app.module';
+const url = apiUrl();
 
 @Injectable({
   providedIn: 'root'
