@@ -24,7 +24,7 @@ export class AuthService {
 
   avatarUrl(): string {
     let user = JSON.parse(localStorage.getItem('user'));
-    return `./data/uploads/profile-pictures/${user.id}.jpg`;
+    return `./data/uploads/profile-pictures/${user._id}.jpg`;
   }
 
   getUser(id: string): Observable<any> {

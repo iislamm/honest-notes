@@ -54,7 +54,7 @@ module.exports.emailLogin = (req, res, next) => {
                         return res.status(200).send({
                             token: 'Bearer ' + token,
                             user: {
-                                id: data._id,
+                                _id: data._id,
                                 username: data.username,
                                 fullname: data.fullname,
                                 email: data.email,

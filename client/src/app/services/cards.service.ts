@@ -17,7 +17,7 @@ export class CardsService {
       'new-user': {title: "Wohooo!", value: "Welcome to Honest notes. Try searching for your friends using the search field in the sidebar"},
       'email-verify': {title: "Verify e-mail", value: "Please verify your email to get the most of Honest Notes"},
       'new-messages': {title: "New messages", value: "Pssst, you have new messages. Check them now"},
-      'no-new': {title: "Gain more feedback", value: `Share your profile now to get more feedback from your friends. Here's your profile link: http://localhost:4200/user/${this.user.id}/verify`}
+      'no-new': {title: "Gain more feedback", value: `Share your profile now to get more feedback from your friends. Here's your profile link: http://localhost:4200/user/${this.user._id}/verify`}
     };
   }
 

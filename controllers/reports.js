@@ -8,12 +8,7 @@ const minChars = 10;
 const reportKey = shortid.generate();
 
 module.exports.newReport = (req, res, next) => {
-
-    upload(req, res, function (err) {
-        if (err) {
-          // An error occurred when uploading
-        //   return res.status(403).send({message: "File has to be an image"});
-        }
+    
         let { sender, content } = req.body;
         if (content.length < minChars) {
             return res.status(403).send({message: `A report has to be at least ${minChars} characters`});
@@ -32,5 +27,4 @@ module.exports.newReport = (req, res, next) => {
         }).catch(err => {
             return res.status(500).send({message: "Couldn't send report => " + err});
         })
-    })
 }

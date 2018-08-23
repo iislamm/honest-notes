@@ -152,17 +152,17 @@ module.exports.findUsername = (req, res, next) => {
 
 // Edit user's data
 module.exports.editUser = (req, res, next) => {
-    let userId = req.params.uderId;
-	User.findOneAndUpdate({_id: userId}, req.params).then(() => {
+    let userId = req.params.userId;
+    console.log(userId);
+	User.findOneAndUpdate({_id: userId}, req.body).then(() => {
 		User.findOne({_id: userId}).then(( data ) => {
 			if ( !data ) {
 				res.status(500).send({
                     message: "Couldn't find the updated user: " + err
                 });
 			} else {
-				res.status(200).send({
-                    message: "User successfully updated"
-                });
+                data.id = data._id;
+				res.status(200).send(data);
 			}
         })
         .catch(err => {
@@ -223,20 +223,4 @@ module.exports.getLoginHistory = (req, res, next) => {
 module.exports.getAvatar = (req, res, next) => {
     let id = req.params.id;
     res.sendFile(`/uploads/profile-picures/${id}`);
-}
-
-module.exports.updateUser = (req, res, nex) => {
-    const id = req.params.productId;
-    const updateOps = {};
-    for (const ops of req.body) {
-        updateOps[ops.propName] = ops.value;
-    }
-    User.update({_id: id}, {$set: updateOps}, (err, data) => {
-        if (err) {
-            console.log(err);
-            res.status(500);
-        } else {
-            res.status(200).send(data);
-        }
-    });
 }

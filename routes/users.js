@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const request = require('request');
-const bcrypt = require('bcrypt')
 const passport = require('passport');
 
 const usersController = require('../controllers/users.js');
@@ -24,7 +22,7 @@ router.post('/forget/send', usersController.sendForget);
 
 router.put('/:id/avatar', usersController.uploadAvatar);
 
-router.put('edit/:userId', passport.authenticate('jwt', { session: false }), usersController.editUser);
+router.put('/edit/:userId', passport.authenticate('jwt', { session: false }), usersController.editUser);
 
 
 module.exports = router;

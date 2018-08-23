@@ -1687,7 +1687,7 @@ var AuthService = /** @class */ (function () {
     }
     AuthService.prototype.avatarUrl = function () {
         var user = JSON.parse(localStorage.getItem('user'));
-        return "./data/uploads/profile-pictures/" + user.id + ".jpg";
+        return "./data/uploads/profile-pictures/" + user._id + ".jpg";
     };
     AuthService.prototype.getUser = function (id) {
         return this.http.get(url + "users/find/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }));
@@ -1803,7 +1803,7 @@ var CardsService = /** @class */ (function () {
             'new-user': { title: "Wohooo!", value: "Welcome to Honest notes. Try searching for your friends using the search field in the sidebar" },
             'email-verify': { title: "Verify e-mail", value: "Please verify your email to get the most of Honest Notes" },
             'new-messages': { title: "New messages", value: "Pssst, you have new messages. Check them now" },
-            'no-new': { title: "Gain more feedback", value: "Share your profile now to get more feedback from your friends. Here's your profile link: http://localhost:4200/user/" + this.user.id + "/verify" }
+            'no-new': { title: "Gain more feedback", value: "Share your profile now to get more feedback from your friends. Here's your profile link: http://localhost:4200/user/" + this.user._id + "/verify" }
         };
     }
     CardsService.prototype.generateCards = function () {
@@ -1987,13 +1987,11 @@ var UserService = /** @class */ (function () {
     }
     UserService.prototype.update = function (ops) {
         var _this = this;
-        var user = this.auth.getCurrentUser;
+        var user = this.auth.getCurrentUser();
         var token = this.auth.getToken();
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"];
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', token);
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Authorization': token });
         console.log("should send the request");
-        return this.http.put(url + "users/edit", ops, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (res) { return res; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (res) {
+        return this.http.put(url + "users/edit/" + user._id, ops, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (res) { return res; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (res) {
             var newUser = {
                 token: token,
                 user: res
