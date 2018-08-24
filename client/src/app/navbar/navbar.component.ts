@@ -4,6 +4,7 @@ import * as $ from 'jquery';
 import { MessagesService } from '../services/messages.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +17,9 @@ export class NavbarComponent implements OnInit {
   unseen: number;
   avatarUrl: string;
 
-  constructor(public messagesService: MessagesService, private auth: AuthService, private router: Router) {
+  search: string;
+
+  constructor(public messagesService: MessagesService, private auth: AuthService, private userService: UserService, private router: Router) {
 
     this.updateUnread();
 
@@ -57,6 +60,11 @@ export class NavbarComponent implements OnInit {
   logOut(): void {
     this.auth.logOut();
     document.location.reload();
+  }
+
+  onSearch(): void {
+    console.log('ran');
+    this.router.navigate[`/search/${this.search}`];
   }
 
 }

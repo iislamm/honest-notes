@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, catchError } from 'rxjs/operators';
 
 import { apiUrl } from '../app.module';
 const url = apiUrl();
@@ -33,5 +33,11 @@ export class UserService {
         this.auth.saveUser(newUser);
       })
     );
+  }
+
+  search(username): Observable<any> {
+    return this.http.get(`${url}users/search/${username}`).pipe(
+      map(results => results)
+    )
   }
 }

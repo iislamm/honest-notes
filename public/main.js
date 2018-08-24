@@ -373,12 +373,13 @@ var AppComponent = /** @class */ (function () {
 /*!*******************************!*\
   !*** ./src/app/app.module.ts ***!
   \*******************************/
-/*! exports provided: apiUrl, tokenGetter, AppModule */
+/*! exports provided: apiUrl, clientUrl, tokenGetter, AppModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "apiUrl", function() { return apiUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clientUrl", function() { return clientUrl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tokenGetter", function() { return tokenGetter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
@@ -438,6 +439,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 function apiUrl() {
+    return "http://localhost:3000/";
+}
+function clientUrl() {
     return "http://localhost:3000/";
 }
 function tokenGetter() {
@@ -1050,7 +1054,7 @@ var MessagesComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar-custom\">\n  <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" id=\"collapse-toggle\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n    <a class=\"navbar-brand\" [routerLink]=\"['/']\"><img src=\"./assets/logo.png\" alt=\"Honest Notes\"></a>\n  </div>\n  <div class=\"collapse-nav\" id=\"co1lapsed-nav\">\n\n    <div class=\"collapsed-nav-content\">\n      \n      <div class=\"navbar-settings\">\n        <a class=\"profile-picture\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/profile']\"><img src=\"{{avatarUrl}}\" alt=\"Profile Picture\"></a>\n        <div class=\"settings\">\n          <a [routerLink]=\"['/settings']\">\n            <fa-icon [icon]=\"faCog\"></fa-icon>\n          </a>\n\n        </div>\n      </div>\n\n      <div class=\"search\">\n        <input type=\"text\" (ngModel)=\"search\" class=\"form-control\" placeholder=\"Search...\">\n      </div>\n\n      <div class=\"nav-body\">\n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/']\">Home</a>\n        </div>\n        \n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/messages']\">Messages <div *ngIf=\"unseen != 0\" class=\"unread\">{{unseen}}</div></a>\n        </div>\n\n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/feedback']\">Send Feedback</a>\n        </div>\n\n        <div class=\"nav-item\">\n          <a (click)=\"logOut()\" href=\"#\">Log out</a>\n        </div>\n\n      </div>\n\n      <div class=\"footer\">\n        <p>All rights reserved to <a href=\"http://islamelbanna.info\" target=\"_blank\">Islam Mohamed</a></p>\n        <a href=\"#\">Terms of use</a>\n      </div>\n    </div>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar-custom\">\n  <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" id=\"collapse-toggle\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n    <a class=\"navbar-brand\" [routerLink]=\"['/']\"><img src=\"./assets/logo.png\" alt=\"Honest Notes\"></a>\n  </div>\n  <div class=\"collapse-nav\" id=\"co1lapsed-nav\">\n\n    <div class=\"collapsed-nav-content\">\n      \n      <div class=\"navbar-settings\">\n        <a class=\"profile-picture\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/profile']\"><img src=\"{{avatarUrl}}\" alt=\"Profile Picture\"></a>\n        <div class=\"settings\">\n          <a [routerLink]=\"['/settings']\">\n            <fa-icon [icon]=\"faCog\"></fa-icon>\n          </a>\n\n        </div>\n      </div>\n\n      <div class=\"search\">\n        <input type=\"text\" [(ngModel)]=\"search\" class=\"form-control\" placeholder=\"Search...\" (change)=\"onSearch()\">\n      </div>\n\n      <div class=\"nav-body\">\n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/']\">Home</a>\n        </div>\n        \n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/messages']\">Messages <div *ngIf=\"unseen != 0\" class=\"unread\">{{unseen}}</div></a>\n        </div>\n\n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/feedback']\">Send Feedback</a>\n        </div>\n\n        <div class=\"nav-item\">\n          <a (click)=\"logOut()\" href=\"#\">Log out</a>\n        </div>\n\n      </div>\n\n      <div class=\"footer\">\n        <p>All rights reserved to <a href=\"http://islamelbanna.info\" target=\"_blank\">Islam Mohamed</a></p>\n        <a href=\"#\">Terms of use</a>\n      </div>\n    </div>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -1082,6 +1086,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_messages_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/messages.service */ "./src/app/services/messages.service.ts");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1097,10 +1102,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent(messagesService, auth, router) {
+    function NavbarComponent(messagesService, auth, userService, router) {
         this.messagesService = messagesService;
         this.auth = auth;
+        this.userService = userService;
         this.router = router;
         this.faCog = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCog"];
         this.updateUnread();
@@ -1140,13 +1147,17 @@ var NavbarComponent = /** @class */ (function () {
         this.auth.logOut();
         document.location.reload();
     };
+    NavbarComponent.prototype.onSearch = function () {
+        console.log('ran');
+        this.router.navigate["/search/" + this.search];
+    };
     NavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-navbar',
             template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/navbar/navbar.component.html"),
             styles: [__webpack_require__(/*! ./navbar.component.scss */ "./src/app/navbar/navbar.component.scss")]
         }),
-        __metadata("design:paramtypes", [_services_messages_service__WEBPACK_IMPORTED_MODULE_3__["MessagesService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+        __metadata("design:paramtypes", [_services_messages_service__WEBPACK_IMPORTED_MODULE_3__["MessagesService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"], _services_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -1561,7 +1572,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var routes = [
     { path: '', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
     { path: 'messages', component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
-    { path: 'search/:id', component: _search_search_component__WEBPACK_IMPORTED_MODULE_5__["SearchComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
+    { path: 'search/:username', component: _search_search_component__WEBPACK_IMPORTED_MODULE_5__["SearchComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
     { path: 'feedback', component: _feedback_feedback_component__WEBPACK_IMPORTED_MODULE_8__["FeedbackComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
     { path: 'profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_9__["ProfileComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
     { path: 'settings', component: _settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
@@ -1594,7 +1605,7 @@ var RoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "<div class=\"cards-container\">\r\n  <div *ngIf=\"results.length != 0\">\r\n\t\t<div *ngFor=\"let user of results\">\r\n\t\t\t<a href=\"{{clientUrl}}{{user.username}}\">\r\n\t\t\t\t<div class=\"card\">\r\n\t\t\t\t\t<img src=\"{{user.avatarUrl}}\" alt=\"{{user.fullname}}\">\r\n\t\t\t\t\t<div class=\"title\">{{user.fullname}}</div>\r\n\t\t\t\t</div>\r\n\t\t\t</a>\r\n\t\t</div>\r\n  </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1605,7 +1616,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "img {\n  width: 60px;\n  display: inline-block;\n  border-radius: 50%; }\n\n.title {\n  display: inline-block;\n  margin-left: 25px; }\n\na, a:hover, a:focus, a:active, a:visited {\n  color: inherit; }\n"
 
 /***/ }),
 
@@ -1620,6 +1631,10 @@ module.exports = ""
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchComponent", function() { return SearchComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
+/* harmony import */ var _app_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../app.module */ "./src/app/app.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1630,10 +1645,35 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
 var SearchComponent = /** @class */ (function () {
-    function SearchComponent() {
+    function SearchComponent(userService, auth, route) {
+        this.userService = userService;
+        this.auth = auth;
+        this.route = route;
+        this.results = [];
+        this.clientUrl = Object(_app_module__WEBPACK_IMPORTED_MODULE_4__["clientUrl"])();
     }
     SearchComponent.prototype.ngOnInit = function () {
+        this.search();
+    };
+    SearchComponent.prototype.search = function () {
+        var _this = this;
+        var username = this.route.snapshot.paramMap.get('username');
+        this.userService.search(username).subscribe(function (results) {
+            var proccessed = 0;
+            results.forEach(function (user) {
+                proccessed++;
+                user.avatarUrl = _this.auth.customAvatarUrl(user._id);
+                if (proccessed == results.length) {
+                    _this.results = results;
+                }
+            });
+            console.log(results);
+        });
     };
     SearchComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1641,7 +1681,7 @@ var SearchComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./search.component.html */ "./src/app/search/search.component.html"),
             styles: [__webpack_require__(/*! ./search.component.scss */ "./src/app/search/search.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
     ], SearchComponent);
     return SearchComponent;
 }());
@@ -1688,6 +1728,9 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.avatarUrl = function () {
         var user = JSON.parse(localStorage.getItem('user'));
         return "./data/uploads/profile-pictures/" + user._id + ".jpg";
+    };
+    AuthService.prototype.customAvatarUrl = function (id) {
+        return "./data/uploads/profile-pictures/" + id + ".jpg";
     };
     AuthService.prototype.getUser = function (id) {
         return this.http.get(url + "users/find/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }));
@@ -2002,6 +2045,9 @@ var UserService = /** @class */ (function () {
             _this.auth.saveUser(newUser);
         }));
     };
+    UserService.prototype.search = function (username) {
+        return this.http.get(url + "users/search/" + username).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (results) { return results; }));
+    };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -2146,7 +2192,6 @@ var SettingsComponent = /** @class */ (function () {
             this.ops.bio = this.bio;
         }
         if (this.newPassword) {
-            console.log("reached");
             if (this.newPassword.length != 0) {
                 if (this.newPassword !== this.verifyPassword) {
                     this.flashMessages.show("Passwords don't match!", { cssClass: "alert-danger", timeout: 5000 });
@@ -2156,6 +2201,10 @@ var SettingsComponent = /** @class */ (function () {
                     this.ops.currentPassword = this.currentPassword;
                     this.ops.password = this.newPassword;
                 }
+            }
+            else {
+                delete this.ops.password;
+                delete this.ops.currentPassword;
             }
         }
         console.log(this.ops);

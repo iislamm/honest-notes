@@ -32,6 +32,10 @@ export function apiUrl() {
   return "http://localhost:3000/";
 }
 
+export function clientUrl() {
+  return "http://localhost:3000/";
+}
+
 export function tokenGetter() {
   return localStorage.getItem('token');
 }

@@ -10,6 +10,8 @@ router.get('/find/:id', usersController.findUser);
 
 router.get('/find/username/:username', usersController.findUsername);
 
+router.get('/search/:username', usersController.search);
+
 router.get('/get/username/:username', usersController.findUsername);
 
 router.get('/activate/:userId/:code', usersController.activate);

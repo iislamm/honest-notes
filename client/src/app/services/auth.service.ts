@@ -27,6 +27,10 @@ export class AuthService {
     return `./data/uploads/profile-pictures/${user._id}.jpg`;
   }
 
+  customAvatarUrl(id): string {
+    return `./data/uploads/profile-pictures/${id}.jpg`;
+  }
+
   getUser(id: string): Observable<any> {
     return this.http.get(`${url}users/find/${id}`).pipe(
       map(res => res)

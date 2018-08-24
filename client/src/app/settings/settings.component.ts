@@ -67,7 +67,6 @@ export class SettingsComponent implements OnInit {
     }
 
     if (this.newPassword) {
-      console.log("reached");
       if (this.newPassword.length != 0) {
         if (this.newPassword !== this.verifyPassword) {
           this.flashMessages.show("Passwords don't match!", {cssClass: "alert-danger", timeout: 5000});
@@ -77,7 +76,10 @@ export class SettingsComponent implements OnInit {
           this.ops.currentPassword = this.currentPassword;
           this.ops.password = this.newPassword;
         }
-      }      
+      } else {
+        delete this.ops.password;
+        delete this.ops.currentPassword;
+      }
     }
 
     console.log(this.ops);

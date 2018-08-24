@@ -1,0 +1,13 @@
+<div class="cards-container">
+  <div *ngIf="results.length != 0">
+		<div *ngFor="let user of results">
+			<a href="{{clientUrl}}{{user.username}}">
+				<div class="card">
+					<img src="{{user.avatarUrl}}" alt="{{user.fullname}}">
+					<div class="title">{{user.fullname}}</div>
+				</div>
+			</a>
+		</div>
+  </div>
+
+</div>
