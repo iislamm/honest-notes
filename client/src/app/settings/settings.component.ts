@@ -67,9 +67,11 @@ export class SettingsComponent implements OnInit {
     }
 
     if (this.newPassword) {
+      console.log("reached");
       if (this.newPassword.length != 0) {
         if (this.newPassword !== this.verifyPassword) {
-          this.flashMessages.show("Passwords don't match!", {cssClass: "alert-danger", timeout: 10000});
+          this.flashMessages.show("Passwords don't match!", {cssClass: "alert-danger", timeout: 5000});
+          return;
         }
         else {
           this.ops.currentPassword = this.currentPassword;
@@ -83,7 +85,8 @@ export class SettingsComponent implements OnInit {
     this.userService.update(this.ops).subscribe(res => {
       this.flashMessages.show("Successfully updated", {cssClass: 'alert-success'});
     }, (err) => {
-      this.flashMessages.show(err, {cssClass: 'alert-danger'});
+      console.log(err);
+      this.flashMessages.show(err.error.message, {cssClass: 'alert-danger'});
     })
 
   }

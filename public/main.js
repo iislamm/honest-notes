@@ -2059,7 +2059,7 @@ var ValidationService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"settings-container\">\n  <h3 class=\"page-title\">Account Settings</h3>\n  <div class=\"text-center\">\n    <flash-messages></flash-messages>\n  </div>\n  <div class=\"col-sm-6\">\n    <div class=\"data\">\n      <span class=\"title\">Name: </span>\n      <input type=\"text\" class=\"form-control read\" name=\"fullname\" [(ngModel)]=\"fullname\" >\n    </div>\n    <div class=\"data\">\n      <span class=\"title\">E-mail: </span>\n      <input type=\"text\" class=\"form-control read\" [(ngModel)]=\"email\">\n    </div>\n    <div class=\"data\">\n      <span class=\"title\">Bio: </span>\n      <textarea class=\"form-control read\" rows=\"2\" [(ngModel)]=\"bio\" placeholder=\"Tap to add bio\"></textarea>\n    </div>\n  </div>\n  \n  <div class=\"col-sm-6\">\n\n    <div class=\"data\">\n      <div class=\"btn-default form-control\" (click)=\"onChangePasswordClick()\">Change Password</div>\n    </div>\n\n    <div class=\"password-form\" *ngIf=\"changePassword === true\">\n      <div class=\"form-group\">\n        <input type=\"password\" name=\"current-password\" id=\"current-password\" class=\"form-control\" placeholder=\"Current password\">\n      </div>\n\n      <div class=\"form-group\">\n        <input type=\"password\" name=\"new-password\" id=\"new-password\" class=\"form-control\" placeholder=\"New password\">\n      </div>\n\n        <div class=\"form-group\">\n          <input type=\"password\" name=\"verify-password\" id=\"verify-password\" class=\"form-control\" placeholder=\"Verify password\">\n        </div>\n    </div>\n  </div>\n  \n</div>\n\n<div class=\"text-center\">\n  <button class=\"btn-default\" (click)=\"onSave()\">Save</button>\n</div>\n"
+module.exports = "<div class=\"settings-container\">\n  <h3 class=\"page-title\">Account Settings</h3>\n  <div class=\"text-center\">\n    <flash-messages></flash-messages>\n  </div>\n  <div class=\"col-sm-6\">\n    <div class=\"data\">\n      <span class=\"title\">Name: </span>\n      <input type=\"text\" class=\"form-control read\" name=\"fullname\" [(ngModel)]=\"fullname\" >\n    </div>\n    <div class=\"data\">\n      <span class=\"title\">E-mail: </span>\n      <input type=\"text\" class=\"form-control read\" [(ngModel)]=\"email\">\n    </div>\n    <div class=\"data\">\n      <span class=\"title\">Bio: </span>\n      <textarea class=\"form-control read\" rows=\"2\" [(ngModel)]=\"bio\" placeholder=\"Tap to add bio\"></textarea>\n    </div>\n  </div>\n  \n  <div class=\"col-sm-6\">\n\n    <div class=\"data\">\n      <div class=\"btn-default form-control\" (click)=\"onChangePasswordClick()\">Change Password</div>\n    </div>\n\n    <div class=\"password-form\" *ngIf=\"changePassword === true\">\n      <div class=\"form-group\">\n        <input [(ngModel)]=\"currentPassword\" type=\"password\" name=\"current-password\" id=\"current-password\" class=\"form-control\" placeholder=\"Current password\">\n      </div>\n\n      <div class=\"form-group\">\n        <input [(ngModel)]=\"newPassword\" type=\"password\" name=\"new-password\" id=\"new-password\" class=\"form-control\" placeholder=\"New password\">\n      </div>\n\n        <div class=\"form-group\">\n          <input [(ngModel)]=\"verifyPassword\" type=\"password\" name=\"verify-password\" id=\"verify-password\" class=\"form-control\" placeholder=\"Verify password\">\n        </div>\n    </div>\n  </div>\n  \n</div>\n\n<div class=\"text-center\">\n  <button class=\"btn-default\" (click)=\"onSave()\">Save</button>\n</div>\n"
 
 /***/ }),
 
@@ -2146,9 +2146,11 @@ var SettingsComponent = /** @class */ (function () {
             this.ops.bio = this.bio;
         }
         if (this.newPassword) {
+            console.log("reached");
             if (this.newPassword.length != 0) {
                 if (this.newPassword !== this.verifyPassword) {
-                    this.flashMessages.show("Passwords don't match!", { cssClass: "alert-danger", timeout: 10000 });
+                    this.flashMessages.show("Passwords don't match!", { cssClass: "alert-danger", timeout: 5000 });
+                    return;
                 }
                 else {
                     this.ops.currentPassword = this.currentPassword;
@@ -2160,7 +2162,8 @@ var SettingsComponent = /** @class */ (function () {
         this.userService.update(this.ops).subscribe(function (res) {
             _this.flashMessages.show("Successfully updated", { cssClass: 'alert-success' });
         }, function (err) {
-            _this.flashMessages.show(err, { cssClass: 'alert-danger' });
+            console.log(err);
+            _this.flashMessages.show(err.error.message, { cssClass: 'alert-danger' });
         });
     };
     SettingsComponent = __decorate([

@@ -160,14 +160,17 @@ module.exports.editUser = (req, res, next) => {
     console.log(ops);
     if (ops.hasOwnProperty('password')) {
         // let currentPassword;
-        User.findOne(userId)
+        console.log('password', bcrypt.hashSync('123123', 10));
+        User.findById(userId)
             .select('password')
             .then(user => {
                 bcrypt.compare(ops.currentPassword, user.password).then(same => {
                     if (same == false) {
-                        return res.status(403);
+                        console.log('not the same');
+                        return res.status(403).send({message: "Wrong password entered!"});
                     } else {
-                        User.findOneAndUpdate({_id: userId}, req.body).then(() => {
+                        ops.password = bcrypt.hashSync(ops.password, 10);
+                        User.findOneAndUpdate({_id: userId}, ops).then(() => {
                             User.findOne({_id: userId}).then(( data ) => {
                                 if ( !data ) {
                                     res.status(500).send({
