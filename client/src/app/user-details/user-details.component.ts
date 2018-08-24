@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../user';
 import { MessagesService } from '../services/messages.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -21,6 +21,7 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(private auth: AuthService,
     private route: ActivatedRoute,
+    private router: Router,
     private messagesService: MessagesService,
     private flashMessages: FlashMessagesService) {
       this.avatarUrl = this.auth.avatarUrl();
@@ -32,8 +33,12 @@ export class UserDetailsComponent implements OnInit {
 
   getUser(): void {
     const id: any = this.route.snapshot.paramMap.get('id');
+    let currentUser = this.auth.getCurrentUser();
     this.auth.getUsername(id).subscribe(user => {
       this.user = user;
+      if (user._id == currentUser._id) {
+        this.router.navigate(['/profile']);
+      }
       this.ready = true;
     }, err => {
       this.notFound = true;
@@ -41,7 +46,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   sendMessage(): void {
-    this.messagesService.newMessage(this.message, this.user.id).subscribe(res => {
+    this.messagesService.newMessage(this.message, this.user._id).subscribe(res => {
       this.flashMessages.show("Your message has been sent.", {cssClass: 'alert-success', timeout: 40000});
       console.log(res);
     }, err => {

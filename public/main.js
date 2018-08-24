@@ -612,7 +612,7 @@ var CardsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"cards-container\">\r\n    <div class=\"card\" *ngFor=\"let card of cards\" >\r\n        <h3 class=\"title\">{{card.title}}</h3>\r\n        <p class=\"value\">{{card.value}}</p>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"cards-container\">\r\n    <div class=\"card\" *ngFor=\"let card of cards\" >\r\n        <h3 class=\"title\">{{card.title}}</h3>\r\n        <p class=\"value\" [innerHTML]=\"card.value\"></p>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -737,7 +737,7 @@ var FeedbackComponent = /** @class */ (function () {
         }
         else {
             this.messagesService.newFeedback(this.message).subscribe(function (res) {
-                _this.sent = false;
+                _this.sent = true;
             }, function () {
                 _this.flashMessages.show("An unexpected error occured. Please try again later", { cssClass: 'alert-danger', timeout: 10000 });
             });
@@ -1162,7 +1162,7 @@ var NavbarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"ready === true\">\n  <div class=\"background\"></div>\n  <div class=\"profile text-center\">\n    <img src=\"{{avatarUrl}}\" alt=\"{{user.fullname}}\">\n    <p class=\"name\">{{user.fullname}}</p>\n    <p class=\"bio\">Hello, This is my bio. However, this bio should have short info about me to show for people who visit my profile</p>\n  </div>\n</div>\n\n<div class=\"not-found text-center\" *ngIf=\"notFound === true\">\n  <h3>404!</h3>\n  <p>Oops! The page you're looking for doesn't exist</p>\n</div>"
+module.exports = "<div *ngIf=\"ready === true\">\n  <div class=\"background\"></div>\n  <div class=\"profile text-center\">\n    <img src=\"{{avatarUrl}}\" alt=\"{{user.fullname}}\">\n    <p class=\"name\">{{user.fullname}}</p>\n    <p class=\"bio\">{{user.bio}}</p>\n  </div>\n</div>\n\n<div class=\"not-found text-center\" *ngIf=\"notFound === true\">\n  <h3>404!</h3>\n  <p>Oops! The page you're looking for doesn't exist</p>\n</div>"
 
 /***/ }),
 
@@ -1782,6 +1782,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _messages_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./messages.service */ "./src/app/services/messages.service.ts");
+/* harmony import */ var _app_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../app.module */ "./src/app/app.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1794,6 +1795,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+var url = Object(_app_module__WEBPACK_IMPORTED_MODULE_3__["apiUrl"])();
 var CardsService = /** @class */ (function () {
     function CardsService(auth, messagesService) {
         this.auth = auth;
@@ -1803,7 +1806,7 @@ var CardsService = /** @class */ (function () {
             'new-user': { title: "Wohooo!", value: "Welcome to Honest notes. Try searching for your friends using the search field in the sidebar" },
             'email-verify': { title: "Verify e-mail", value: "Please verify your email to get the most of Honest Notes" },
             'new-messages': { title: "New messages", value: "Pssst, you have new messages. Check them now" },
-            'no-new': { title: "Gain more feedback", value: "Share your profile now to get more feedback from your friends. Here's your profile link: http://localhost:4200/user/" + this.user._id + "/verify" }
+            'no-new': { title: "Gain more feedback", value: "Share your profile now to get more feedback from your friends. Here's your profile link: <a href=\"" + url + this.user.username + "\">" + url + this.user.username + "</a>" }
         };
     }
     CardsService.prototype.generateCards = function () {
@@ -2056,7 +2059,7 @@ var ValidationService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"settings-container\">\n  <h3 class=\"page-title\">Account Settings</h3>\n  <div class=\"text-center\">\n    <flash-messages></flash-messages>\n  </div>\n  <div class=\"col-sm-6\">\n    <div class=\"data\">\n      <span class=\"title\">Name: </span>\n      <input type=\"text\" class=\"form-control read\" name=\"fullname\" [(ngModel)]=\"fullname\" >\n    </div>\n    <div class=\"data\">\n      <span class=\"title\">E-mail: </span>\n      <input type=\"text\" class=\"form-control read\" [(ngModel)]=\"email\">\n    </div>\n    <div class=\"data\">\n      <span class=\"title\">Bio: </span>\n      <textarea class=\"form-control read\" rows=\"2\" [(ngModel)]=\"bio\" placeholder=\"Tap to add bio\"></textarea>\n    </div>\n  </div>\n  \n  <div class=\"col-sm-6\">\n    <div class=\"data\">\n      <!-- <span class=\"title\">Profile Picture: </span> -->\n      <div class=\"form-control file-control btn-default\">\n          <span id=\"fileUploadLabel\">Edit your profile picture</span>\n        <input (change)=\"onFileSelected($event)\" type=\"file\" name=\"avatar\" id=\"avatar\" onchange=\"showFileName()\" required>\n      </div>\n    </div>\n\n    <div class=\"data\">\n      <div class=\"btn-default form-control\" (click)=\"onChangePasswordClick()\">Change Password</div>\n    </div>\n\n    <div class=\"password-form\" *ngIf=\"changePassword === true\">\n      <div class=\"form-group\">\n        <input type=\"password\" name=\"current-password\" id=\"current-password\" class=\"form-control\" placeholder=\"Current password\">\n      </div>\n\n      <div class=\"form-group\">\n        <input type=\"password\" name=\"new-password\" id=\"new-password\" class=\"form-control\" placeholder=\"New password\">\n      </div>\n\n        <div class=\"form-group\">\n          <input type=\"password\" name=\"verify-password\" id=\"verify-password\" class=\"form-control\" placeholder=\"Verify password\">\n        </div>\n    </div>\n  </div>\n  \n</div>\n\n<div class=\"text-center\">\n  <button class=\"btn-default\" (click)=\"onSave()\">Save</button>\n</div>\n"
+module.exports = "<div class=\"settings-container\">\n  <h3 class=\"page-title\">Account Settings</h3>\n  <div class=\"text-center\">\n    <flash-messages></flash-messages>\n  </div>\n  <div class=\"col-sm-6\">\n    <div class=\"data\">\n      <span class=\"title\">Name: </span>\n      <input type=\"text\" class=\"form-control read\" name=\"fullname\" [(ngModel)]=\"fullname\" >\n    </div>\n    <div class=\"data\">\n      <span class=\"title\">E-mail: </span>\n      <input type=\"text\" class=\"form-control read\" [(ngModel)]=\"email\">\n    </div>\n    <div class=\"data\">\n      <span class=\"title\">Bio: </span>\n      <textarea class=\"form-control read\" rows=\"2\" [(ngModel)]=\"bio\" placeholder=\"Tap to add bio\"></textarea>\n    </div>\n  </div>\n  \n  <div class=\"col-sm-6\">\n\n    <div class=\"data\">\n      <div class=\"btn-default form-control\" (click)=\"onChangePasswordClick()\">Change Password</div>\n    </div>\n\n    <div class=\"password-form\" *ngIf=\"changePassword === true\">\n      <div class=\"form-group\">\n        <input type=\"password\" name=\"current-password\" id=\"current-password\" class=\"form-control\" placeholder=\"Current password\">\n      </div>\n\n      <div class=\"form-group\">\n        <input type=\"password\" name=\"new-password\" id=\"new-password\" class=\"form-control\" placeholder=\"New password\">\n      </div>\n\n        <div class=\"form-group\">\n          <input type=\"password\" name=\"verify-password\" id=\"verify-password\" class=\"form-control\" placeholder=\"Verify password\">\n        </div>\n    </div>\n  </div>\n  \n</div>\n\n<div class=\"text-center\">\n  <button class=\"btn-default\" (click)=\"onSave()\">Save</button>\n</div>\n"
 
 /***/ }),
 
@@ -2131,6 +2134,7 @@ var SettingsComponent = /** @class */ (function () {
         this.avatar = event.target.files[0];
     };
     SettingsComponent.prototype.onSave = function () {
+        var _this = this;
         console.log(this.fullname, "\n" + this.user.fullname);
         if (this.fullname != this.user.fullname) {
             this.ops.fullname = this.fullname;
@@ -2148,13 +2152,15 @@ var SettingsComponent = /** @class */ (function () {
                 }
                 else {
                     this.ops.currentPassword = this.currentPassword;
-                    this.ops.newPassword = this.newPassword;
+                    this.ops.password = this.newPassword;
                 }
             }
         }
         console.log(this.ops);
         this.userService.update(this.ops).subscribe(function (res) {
-            console.log(res);
+            _this.flashMessages.show("Successfully updated", { cssClass: 'alert-success' });
+        }, function (err) {
+            _this.flashMessages.show(err, { cssClass: 'alert-danger' });
         });
     };
     SettingsComponent = __decorate([
@@ -2225,9 +2231,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var UserDetailsComponent = /** @class */ (function () {
-    function UserDetailsComponent(auth, route, messagesService, flashMessages) {
+    function UserDetailsComponent(auth, route, router, messagesService, flashMessages) {
         this.auth = auth;
         this.route = route;
+        this.router = router;
         this.messagesService = messagesService;
         this.flashMessages = flashMessages;
         this.ready = false;
@@ -2240,8 +2247,12 @@ var UserDetailsComponent = /** @class */ (function () {
     UserDetailsComponent.prototype.getUser = function () {
         var _this = this;
         var id = this.route.snapshot.paramMap.get('id');
+        var currentUser = this.auth.getCurrentUser();
         this.auth.getUsername(id).subscribe(function (user) {
             _this.user = user;
+            if (user._id == currentUser._id) {
+                _this.router.navigate(['/profile']);
+            }
             _this.ready = true;
         }, function (err) {
             _this.notFound = true;
@@ -2249,7 +2260,7 @@ var UserDetailsComponent = /** @class */ (function () {
     };
     UserDetailsComponent.prototype.sendMessage = function () {
         var _this = this;
-        this.messagesService.newMessage(this.message, this.user.id).subscribe(function (res) {
+        this.messagesService.newMessage(this.message, this.user._id).subscribe(function (res) {
             _this.flashMessages.show("Your message has been sent.", { cssClass: 'alert-success', timeout: 40000 });
             console.log(res);
         }, function (err) {
@@ -2264,6 +2275,7 @@ var UserDetailsComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             _services_messages_service__WEBPACK_IMPORTED_MODULE_3__["MessagesService"],
             angular2_flash_messages__WEBPACK_IMPORTED_MODULE_4__["FlashMessagesService"]])
     ], UserDetailsComponent);

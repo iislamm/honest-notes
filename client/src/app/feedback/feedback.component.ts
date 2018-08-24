@@ -23,7 +23,7 @@ export class FeedbackComponent implements OnInit {
       this.flashMessages.show("Explain more details so we can help you.", {cssClass: 'alert-danger', timeout: 10000});
     } else {
       this.messagesService.newFeedback(this.message).subscribe(res => {
-        this.sent = false;
+        this.sent = true;
       }, () => {
         this.flashMessages.show("An unexpected error occured. Please try again later", {cssClass: 'alert-danger', timeout: 10000});
       })

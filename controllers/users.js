@@ -101,7 +101,7 @@ module.exports.activate = (req, res, next) => {
 				res.status(403).send({message: "User already activated"});
 			} else {
 				if ( code === user.activationCode  ) {
-					User.findOneAndUpdate({_id: user._id}, {activationStatus: true}, () => {
+					User.findOneAndUpdate({_id: user._id}, {activationStatus: true}).then(() => {
 						res.status(200).send({message: "User successfully activated"});
 					})
 				} else {
@@ -154,28 +154,68 @@ module.exports.findUsername = (req, res, next) => {
 module.exports.editUser = (req, res, next) => {
     let userId = req.params.userId;
     console.log(userId);
-	User.findOneAndUpdate({_id: userId}, req.body).then(() => {
-		User.findOne({_id: userId}).then(( data ) => {
-			if ( !data ) {
-				res.status(500).send({
+
+    let ops = req.body;
+
+    console.log(ops);
+    if (ops.hasOwnProperty('password')) {
+        // let currentPassword;
+        User.findOne(userId)
+            .select('password')
+            .then(user => {
+                bcrypt.compare(ops.currentPassword, user.password).then(same => {
+                    if (same == false) {
+                        return res.status(403);
+                    } else {
+                        User.findOneAndUpdate({_id: userId}, req.body).then(() => {
+                            User.findOne({_id: userId}).then(( data ) => {
+                                if ( !data ) {
+                                    res.status(500).send({
+                                        message: "Couldn't find the updated user: " + err
+                                    });
+                                } else {
+                                    data.id = data._id;
+                                    res.status(200).send(data);
+                                }
+                            })
+                            .catch(err => {
+                                res.status(500).send({
+                                    message: "Couldn't find the updated user: " + err
+                                });
+                            })
+                        })
+                        .catch(err => {
+                            res.status(500).send({
+                                message: "Couldn't find or update user: " + err
+                            })
+                        })
+                    }
+                })
+            })
+    } else {
+        User.findOneAndUpdate({_id: userId}, ops).then(() => {
+            User.findOne({_id: userId}).then(( data ) => {
+                if ( !data ) {
+                    res.status(500).send({
+                        message: "Couldn't find the updated user: " + err
+                    });
+                } else {
+                    data.id = data._id;
+                    res.status(200).send(data);
+                }
+            })
+            .catch(err => {
+                res.status(500).send({
                     message: "Couldn't find the updated user: " + err
                 });
-			} else {
-                data.id = data._id;
-				res.status(200).send(data);
-			}
+            })
         })
         .catch(err => {
             res.status(500).send({
-                message: "Couldn't find the updated user: " + err
-            });
+                message: "Couldn't find or update user: " + err
+            })
         })
-    })
-    .catch(err => {
-        res.status(500).send({
-            message: "Couldn't find or update user: " + err
-        })
-    })
+    }
 }
 
 // Send the forget code to the user

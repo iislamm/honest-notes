@@ -73,7 +73,7 @@ export class SettingsComponent implements OnInit {
         }
         else {
           this.ops.currentPassword = this.currentPassword;
-          this.ops.newPassword = this.newPassword;
+          this.ops.password = this.newPassword;
         }
       }      
     }
@@ -81,7 +81,9 @@ export class SettingsComponent implements OnInit {
     console.log(this.ops);
 
     this.userService.update(this.ops).subscribe(res => {
-      console.log(res);
+      this.flashMessages.show("Successfully updated", {cssClass: 'alert-success'});
+    }, (err) => {
+      this.flashMessages.show(err, {cssClass: 'alert-danger'});
     })
 
   }
