@@ -59,6 +59,7 @@ export class MessagesService {
   newMessage(message: string, reciever: string): Observable<any> {
     let user = JSON.parse(localStorage.getItem('user'));
     let token = this.auth.getToken();
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -74,15 +75,13 @@ export class MessagesService {
 
     return this.http.post(`${url}messages/new`, body, httpOptions).pipe(
       map(res => res),
-      tap(res => {console.log(res);})
+      tap(res => console.log(res))
     )
   }
 
   newFeedback(message: string): Observable<any> {
     let user = JSON.parse(localStorage.getItem('user'));
     let token = this.auth.getToken();
-
-    console.log('token:', token);
 
     const httpOptions = {
       headers: new HttpHeaders({

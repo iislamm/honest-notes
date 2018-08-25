@@ -1054,7 +1054,7 @@ var MessagesComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar-custom\">\n  <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" id=\"collapse-toggle\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n    <a class=\"navbar-brand\" [routerLink]=\"['/']\"><img src=\"./assets/logo.png\" alt=\"Honest Notes\"></a>\n  </div>\n  <div class=\"collapse-nav\" id=\"co1lapsed-nav\">\n\n    <div class=\"collapsed-nav-content\">\n      \n      <div class=\"navbar-settings\">\n        <a class=\"profile-picture\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/profile']\"><img src=\"{{avatarUrl}}\" alt=\"Profile Picture\"></a>\n        <div class=\"settings\">\n          <a [routerLink]=\"['/settings']\">\n            <fa-icon [icon]=\"faCog\"></fa-icon>\n          </a>\n\n        </div>\n      </div>\n\n      <div class=\"search\">\n        <input type=\"text\" [(ngModel)]=\"search\" class=\"form-control\" placeholder=\"Search...\" (change)=\"onSearch()\">\n      </div>\n\n      <div class=\"nav-body\">\n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/']\">Home</a>\n        </div>\n        \n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/messages']\">Messages <div *ngIf=\"unseen != 0\" class=\"unread\">{{unseen}}</div></a>\n        </div>\n\n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/feedback']\">Send Feedback</a>\n        </div>\n\n        <div class=\"nav-item\">\n          <a (click)=\"logOut()\" href=\"#\">Log out</a>\n        </div>\n\n      </div>\n\n      <div class=\"footer\">\n        <p>All rights reserved to <a href=\"http://islamelbanna.info\" target=\"_blank\">Islam Mohamed</a></p>\n        <a href=\"#\">Terms of use</a>\n      </div>\n    </div>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar-custom\">\n  <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" id=\"collapse-toggle\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n    <a class=\"navbar-brand\" [routerLink]=\"['/']\"><img src=\"./assets/logo.png\" alt=\"Honest Notes\"></a>\n  </div>\n  <div class=\"collapse-nav\" id=\"co1lapsed-nav\">\n\n    <div class=\"collapsed-nav-content\">\n      \n      <div class=\"navbar-settings\">\n        <a class=\"profile-picture\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/profile']\"><img src=\"{{avatarUrl}}\" alt=\"Profile Picture\"></a>\n        <div class=\"settings\">\n          <a [routerLink]=\"['/settings']\">\n            <fa-icon [icon]=\"faCog\"></fa-icon>\n          </a>\n\n        </div>\n      </div>\n\n      <div class=\"search\">\n        <input type=\"text\" [(ngModel)]=\"search\" class=\"form-control\" placeholder=\"Search...\" (keyup)=\"onSearch()\">\n      </div>\n\n      <div class=\"nav-body\">\n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/']\">Home</a>\n        </div>\n        \n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/messages']\">Messages <div *ngIf=\"unseen != 0\" class=\"unread\">{{unseen}}</div></a>\n        </div>\n\n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/feedback']\">Send Feedback</a>\n        </div>\n\n        <div class=\"nav-item\">\n          <a (click)=\"logOut()\" href=\"#\">Log out</a>\n        </div>\n\n      </div>\n\n      <div class=\"footer\">\n        <p>All rights reserved to <a href=\"http://islamelbanna.info\" target=\"_blank\">Islam Mohamed</a></p>\n        <a href=\"#\">Terms of use</a>\n      </div>\n    </div>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -1148,8 +1148,21 @@ var NavbarComponent = /** @class */ (function () {
         document.location.reload();
     };
     NavbarComponent.prototype.onSearch = function () {
-        console.log('ran');
-        this.router.navigate["/search/" + this.search];
+        if (new RegExp("^/search/.*").test(this.router.url) == false) {
+            console.log(this.router.url);
+            this.currentUrl = this.router.url;
+        }
+        if (this.search.length != 0) {
+            setTimeout(this.router.navigate(["/search/" + this.search]), 5000);
+        }
+        else {
+            if (this.currentUrl) {
+                this.router.navigate([this.currentUrl]);
+            }
+            else {
+                this.router.navigate(['/']);
+            }
+        }
     };
     NavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1965,12 +1978,11 @@ var MessagesService = /** @class */ (function () {
             "reciever": reciever,
             "content": message
         };
-        return this.http.post(url + "messages/new", body, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (res) { console.log(res); }));
+        return this.http.post(url + "messages/new", body, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (res) { return console.log(res); }));
     };
     MessagesService.prototype.newFeedback = function (message) {
         var user = JSON.parse(localStorage.getItem('user'));
         var token = this.auth.getToken();
-        console.log('token:', token);
         var httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
                 'Content-Type': 'application/json',
@@ -2291,7 +2303,6 @@ var UserDetailsComponent = /** @class */ (function () {
         this.flashMessages = flashMessages;
         this.ready = false;
         this.notFound = false;
-        this.avatarUrl = this.auth.avatarUrl();
     }
     UserDetailsComponent.prototype.ngOnInit = function () {
         this.getUser();
@@ -2302,6 +2313,7 @@ var UserDetailsComponent = /** @class */ (function () {
         var currentUser = this.auth.getCurrentUser();
         this.auth.getUsername(id).subscribe(function (user) {
             _this.user = user;
+            _this.avatarUrl = _this.auth.customAvatarUrl(_this.user._id);
             if (user._id == currentUser._id) {
                 _this.router.navigate(['/profile']);
             }

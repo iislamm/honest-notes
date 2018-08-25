@@ -23,9 +23,7 @@ export class UserDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private messagesService: MessagesService,
-    private flashMessages: FlashMessagesService) {
-      this.avatarUrl = this.auth.avatarUrl();
-    }
+    private flashMessages: FlashMessagesService) { }
 
   ngOnInit() {
     this.getUser();
@@ -36,6 +34,7 @@ export class UserDetailsComponent implements OnInit {
     let currentUser = this.auth.getCurrentUser();
     this.auth.getUsername(id).subscribe(user => {
       this.user = user;
+      this.avatarUrl = this.auth.customAvatarUrl(this.user._id);
       if (user._id == currentUser._id) {
         this.router.navigate(['/profile']);
       }

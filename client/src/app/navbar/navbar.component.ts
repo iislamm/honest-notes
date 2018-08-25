@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit {
 
   search: string;
 
+  currentUrl: string;
+
   constructor(public messagesService: MessagesService, private auth: AuthService, private userService: UserService, private router: Router) {
 
     this.updateUnread();
@@ -63,8 +65,20 @@ export class NavbarComponent implements OnInit {
   }
 
   onSearch(): void {
-    console.log('ran');
-    this.router.navigate[`/search/${this.search}`];
+    
+    if (new RegExp("^/search/.*").test(this.router.url) == false) {
+      console.log(this.router.url);
+      this.currentUrl = this.router.url;
+    }
+    if (this.search.length != 0) {
+      setTimeout(this.router.navigate([`/search/${this.search}`]), 5000);
+    } else {
+      if (this.currentUrl) {
+        this.router.navigate([this.currentUrl]);
+      } else {
+        this.router.navigate(['/']);
+      }
+    }
   }
 
 }
