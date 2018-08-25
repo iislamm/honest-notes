@@ -4,7 +4,7 @@
       <img src="{{avatarUrl}}" alt="{{user.fullname}}">
       <p class="name">{{user.fullname}}</p>
       <flash-messages></flash-messages>
-      <textarea (ngModel)="message" rows="5" class="form-control" placeholder="Write {{user.fullname.slice(0, user.fullname.indexOf(' '))}} a meessage"></textarea>
+      <textarea [(ngModel)]="message" rows="5" class="form-control" placeholder="Write {{user.fullname.slice(0, user.fullname.indexOf(' '))}} a meessage"></textarea>
       <button (click)="sendMessage()" class="btn-default">Send</button>
   
     </div>

@@ -439,10 +439,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 function apiUrl() {
-    return "http://localhost:3000/";
+    return "http://192.168.1.169:3000/";
 }
 function clientUrl() {
-    return "http://localhost:3000/";
+    return "http://192.168.1.169:3000/";
 }
 function tokenGetter() {
     return localStorage.getItem('token');
@@ -1984,11 +1984,14 @@ var MessagesService = /** @class */ (function () {
             })
         };
         var body = {
+            // "sender": user._id,
+            // "reciever": reciever,
+            // "content": message
             "sender": user._id,
             "reciever": reciever,
             "content": message
         };
-        return this.http.post(url + "messages/new", body, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (res) { return console.log(res); }));
+        return this.http.post(url + "messages/new", body, httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }));
     };
     MessagesService.prototype.newFeedback = function (message) {
         var user = JSON.parse(localStorage.getItem('user'));
@@ -2259,7 +2262,7 @@ var SettingsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"ready === true\">\n    <div class=\"background\"></div>\n    <div class=\"profile text-center\">\n      <img src=\"{{avatarUrl}}\" alt=\"{{user.fullname}}\">\n      <p class=\"name\">{{user.fullname}}</p>\n      <flash-messages></flash-messages>\n      <textarea (ngModel)=\"message\" rows=\"5\" class=\"form-control\" placeholder=\"Write {{user.fullname.slice(0, user.fullname.indexOf(' '))}} a meessage\"></textarea>\n      <button (click)=\"sendMessage()\" class=\"btn-default\">Send</button>\n  \n    </div>\n  </div>\n\n  <div class=\"not-found text-center\" *ngIf=\"notFound === true\">\n    <h3>404!</h3>\n    <p>Oops! The page you're looking for doesn't exist</p>\n  </div>"
+module.exports = "<div *ngIf=\"ready === true\">\n    <div class=\"background\"></div>\n    <div class=\"profile text-center\">\n      <img src=\"{{avatarUrl}}\" alt=\"{{user.fullname}}\">\n      <p class=\"name\">{{user.fullname}}</p>\n      <flash-messages></flash-messages>\n      <textarea [(ngModel)]=\"message\" rows=\"5\" class=\"form-control\" placeholder=\"Write {{user.fullname.slice(0, user.fullname.indexOf(' '))}} a meessage\"></textarea>\n      <button (click)=\"sendMessage()\" class=\"btn-default\">Send</button>\n  \n    </div>\n  </div>\n\n  <div class=\"not-found text-center\" *ngIf=\"notFound === true\">\n    <h3>404!</h3>\n    <p>Oops! The page you're looking for doesn't exist</p>\n  </div>"
 
 /***/ }),
 
@@ -2328,6 +2331,8 @@ var UserDetailsComponent = /** @class */ (function () {
                 _this.router.navigate(['/profile']);
             }
             _this.ready = true;
+            console.log("current user:", currentUser._id);
+            console.log("visted user:", user._id);
         }, function (err) {
             _this.notFound = true;
         });
@@ -2336,6 +2341,7 @@ var UserDetailsComponent = /** @class */ (function () {
         var _this = this;
         this.messagesService.newMessage(this.message, this.user._id).subscribe(function (res) {
             _this.flashMessages.show("Your message has been sent.", { cssClass: 'alert-success', timeout: 40000 });
+            _this.message = "";
             console.log(res);
         }, function (err) {
             _this.flashMessages.show("Unexpected error occured. Please refresh the page and try again", { cssClass: 'alert-danger', timeout: 40000 });

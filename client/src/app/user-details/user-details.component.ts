@@ -39,6 +39,8 @@ export class UserDetailsComponent implements OnInit {
         this.router.navigate(['/profile']);
       }
       this.ready = true;
+      console.log("current user:", currentUser._id);
+      console.log("visted user:", user._id);
     }, err => {
       this.notFound = true;
     })
@@ -47,6 +49,7 @@ export class UserDetailsComponent implements OnInit {
   sendMessage(): void {
     this.messagesService.newMessage(this.message, this.user._id).subscribe(res => {
       this.flashMessages.show("Your message has been sent.", {cssClass: 'alert-success', timeout: 40000});
+      this.message = "";
       console.log(res);
     }, err => {
       this.flashMessages.show("Unexpected error occured. Please refresh the page and try again", {cssClass: 'alert-danger', timeout: 40000});

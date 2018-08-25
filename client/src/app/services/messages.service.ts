@@ -68,14 +68,16 @@ export class MessagesService {
     };
 
     let body = {
+      // "sender": user._id,
+      // "reciever": reciever,
+      // "content": message
       "sender": user._id,
       "reciever": reciever,
       "content": message
     }
 
     return this.http.post(`${url}messages/new`, body, httpOptions).pipe(
-      map(res => res),
-      tap(res => console.log(res))
+      map(res => res)
     )
   }
 
