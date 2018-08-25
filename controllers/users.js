@@ -194,12 +194,12 @@ module.exports.search = (req, res, next) => {
     User.find({
             $or: [{
                     fullname: {
-                        $regex: new RegExp('^' + username + '.*', 'i')
+                        $regex: new RegExp(username + '.*', 'i')
                     }
                 },
                 {
                     username: {
-                        $regex: new RegExp('^' + username + '.*', 'i')
+                        $regex: new RegExp(username + '.*', 'i')
                     }
                 }
             ]

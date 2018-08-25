@@ -71,7 +71,7 @@ export class NavbarComponent implements OnInit {
       this.currentUrl = this.router.url;
     }
     if (this.search.length != 0) {
-      setTimeout(this.router.navigate([`/search/${this.search}`]), 5000);
+      this.router.navigate([`/search/${this.search}`]);
     } else {
       if (this.currentUrl) {
         this.router.navigate([this.currentUrl]);

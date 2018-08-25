@@ -1153,7 +1153,7 @@ var NavbarComponent = /** @class */ (function () {
             this.currentUrl = this.router.url;
         }
         if (this.search.length != 0) {
-            setTimeout(this.router.navigate(["/search/" + this.search]), 5000);
+            this.router.navigate(["/search/" + this.search]);
         }
         else {
             if (this.currentUrl) {
@@ -1585,7 +1585,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var routes = [
     { path: '', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
     { path: 'messages', component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
-    { path: 'search/:username', component: _search_search_component__WEBPACK_IMPORTED_MODULE_5__["SearchComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
+    { path: 'search/:username', component: _search_search_component__WEBPACK_IMPORTED_MODULE_5__["SearchComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]], runGuardsAndResolvers: 'paramsOrQueryParamsChange' },
     { path: 'feedback', component: _feedback_feedback_component__WEBPACK_IMPORTED_MODULE_8__["FeedbackComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
     { path: 'profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_9__["ProfileComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
     { path: 'settings', component: _settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
@@ -1618,7 +1618,7 @@ var RoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"cards-container\">\r\n  <div *ngIf=\"results.length != 0\">\r\n\t\t<div *ngFor=\"let user of results\">\r\n\t\t\t<a href=\"{{clientUrl}}{{user.username}}\">\r\n\t\t\t\t<div class=\"card\">\r\n\t\t\t\t\t<img src=\"{{user.avatarUrl}}\" alt=\"{{user.fullname}}\">\r\n\t\t\t\t\t<div class=\"title\">{{user.fullname}}</div>\r\n\t\t\t\t</div>\r\n\t\t\t</a>\r\n\t\t</div>\r\n  </div>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"cards-container\">\r\n  <div *ngIf=\"results.length != 0\">\r\n\t\t<div *ngFor=\"let user of results\">\r\n\t\t\t<a href=\"{{clientUrl}}{{user.username}}\">\r\n\t\t\t\t<div class=\"card\">\r\n\t\t\t\t\t<img src=\"{{user.avatarUrl}}\" alt=\"{{user.fullname}}\">\r\n\t\t\t\t\t<div class=\"title\">{{user.fullname}}</div>\r\n\t\t\t\t</div>\r\n\t\t\t</a>\r\n\t\t</div>\r\n\t</div>\r\n\t\r\n\t<div *ngIf=\"notFound == true\">\r\n\t\t<h3>Not found!</h3>\r\n\t</div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1663,10 +1663,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var SearchComponent = /** @class */ (function () {
-    function SearchComponent(userService, auth, route) {
+    function SearchComponent(userService, auth, route, activatedRoute) {
         this.userService = userService;
         this.auth = auth;
         this.route = route;
+        this.activatedRoute = activatedRoute;
         this.results = [];
         this.clientUrl = Object(_app_module__WEBPACK_IMPORTED_MODULE_4__["clientUrl"])();
     }
@@ -1675,17 +1676,26 @@ var SearchComponent = /** @class */ (function () {
     };
     SearchComponent.prototype.search = function () {
         var _this = this;
-        var username = this.route.snapshot.paramMap.get('username');
-        this.userService.search(username).subscribe(function (results) {
-            var proccessed = 0;
-            results.forEach(function (user) {
-                proccessed++;
-                user.avatarUrl = _this.auth.customAvatarUrl(user._id);
-                if (proccessed == results.length) {
-                    _this.results = results;
+        this.activatedRoute.url.subscribe(function (url) {
+            var username = _this.route.snapshot.paramMap.get('username');
+            _this.userService.search(username).subscribe(function (results) {
+                var proccessed = 0;
+                results.forEach(function (user) {
+                    proccessed++;
+                    user.avatarUrl = _this.auth.customAvatarUrl(user._id);
+                    if (proccessed == results.length) {
+                        _this.results = results;
+                    }
+                });
+                if (results.length == 0) {
+                    _this.notFound = true;
+                    _this.results = [];
                 }
+                else {
+                    _this.notFound = false;
+                }
+                console.log(results);
             });
-            console.log(results);
         });
     };
     SearchComponent = __decorate([
@@ -1694,7 +1704,7 @@ var SearchComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./search.component.html */ "./src/app/search/search.component.html"),
             styles: [__webpack_require__(/*! ./search.component.scss */ "./src/app/search/search.component.scss")]
         }),
-        __metadata("design:paramtypes", [_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
     ], SearchComponent);
     return SearchComponent;
 }());

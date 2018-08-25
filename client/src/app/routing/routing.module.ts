@@ -13,7 +13,7 @@ import { SettingsComponent } from '../settings/settings.component';
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard] }, 
-  { path: 'search/:username', component: SearchComponent, canActivate: [AuthGuard] },
+  { path: 'search/:username', component: SearchComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'paramsOrQueryParamsChange' },
   { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },

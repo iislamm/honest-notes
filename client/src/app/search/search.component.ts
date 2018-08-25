@@ -13,11 +13,11 @@ export class SearchComponent implements OnInit {
 
   results: any = [];
   ready: boolean;
-  notfound: boolean;
+  notFound: boolean;
 
   clientUrl: string;
   
-  constructor(private userService: UserService, private auth: AuthService, private route: ActivatedRoute) {
+  constructor(private userService: UserService, private auth: AuthService, private route: ActivatedRoute, private activatedRoute: ActivatedRoute) {
     this.clientUrl = clientUrl();
   }
 
@@ -26,19 +26,29 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-    let username = this.route.snapshot.paramMap.get('username');
+    
+    this.activatedRoute.url.subscribe(url => {
 
-    this.userService.search(username).subscribe(results => {
-      let proccessed = 0;
-      results.forEach(user => {
-        proccessed++;
-        user.avatarUrl = this.auth.customAvatarUrl(user._id);
+      let username = this.route.snapshot.paramMap.get('username');
 
-        if (proccessed == results.length) {
-          this.results = results;
+      this.userService.search(username).subscribe(results => {
+        let proccessed = 0;
+        results.forEach(user => {
+          proccessed++;
+          user.avatarUrl = this.auth.customAvatarUrl(user._id);
+  
+          if (proccessed == results.length) {
+            this.results = results;
+          }
+        });
+        if (results.length == 0) {
+          this.notFound = true;
+          this.results = [];
+        } else {
+          this.notFound = false;
         }
-      });
-      console.log(results);
+        console.log(results);
+      })
     })
   }
 
