@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
 import { MessagesService } from '../services/messages.service';
 import { AuthService } from '../services/auth.service';
@@ -14,6 +15,7 @@ import { UserService } from '../services/user.service';
 export class NavbarComponent implements OnInit {
 
   faCog = faCog;
+  faBars = faBars;
   unseen: number;
   avatarUrl: string;
 

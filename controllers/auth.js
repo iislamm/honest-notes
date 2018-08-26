@@ -64,7 +64,8 @@ module.exports.emailLogin = (req, res, next) => {
                                 country: data.country,
                                 timezone: data.timezone,
                                 activationStatus: data.activationStatus,
-                                loginHistory: data.loginHistory
+                                loginHistory: data.loginHistory,
+                                bio: data.bio
                             }
                         });
     
