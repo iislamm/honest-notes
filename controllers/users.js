@@ -4,7 +4,7 @@ const request = require('request');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const shortid = require('shortid');
-const mailController = require('./mailer');
+// const mailController = require('./mailer');
 
 const User = require('../models/user');
 

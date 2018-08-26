@@ -1141,7 +1141,6 @@ var NavbarComponent = /** @class */ (function () {
         var _this = this;
         this.messagesService.unreadNumber().subscribe(function (res) {
             _this.unseen = res.unseen;
-            console.log(res.unseen);
         });
     };
     NavbarComponent.prototype.logOut = function () {

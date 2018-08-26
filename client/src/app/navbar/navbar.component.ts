@@ -56,7 +56,6 @@ export class NavbarComponent implements OnInit {
   updateUnread(): void {
     this.messagesService.unreadNumber().subscribe(res => {
       this.unseen = res.unseen;
-      console.log(res.unseen);
     });
   }
 
