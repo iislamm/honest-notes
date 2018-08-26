@@ -23,13 +23,13 @@ export class NavbarComponent implements OnInit {
 
   constructor(public messagesService: MessagesService, private auth: AuthService, private userService: UserService, private router: Router) {
 
-    this.updateUnread();
-
     this.avatarUrl = this.auth.avatarUrl();
 
   }
 
   ngOnInit() {
+
+    this.updateUnread();
 
     $('#collapse-toggle').click(function() {
       if ($('#co1lapsed-nav').css('left') !== '0px') {
@@ -39,16 +39,16 @@ export class NavbarComponent implements OnInit {
       }
     });
     if ($(window).height() < 500) {
-      $('.collapsed-nav-content').height(600);
+      $('.collapsed-nav-content').height(500);
     } else {
       $('.collapsed-nav-content').height($(window).height());
     }
 
     $(window).resize(function() {
       if ($(window).height() < 500) {
-        $('#collapsed-nav-content').height(600);
+        $('#collapsed-nav-content').height(500);
       } else {
-        $('#collapsed-nav-content').height($(window).height() - 50);
+        $('#collapsed-nav-content').height($(window).height());
       }
     })
   }
@@ -56,6 +56,7 @@ export class NavbarComponent implements OnInit {
   updateUnread(): void {
     this.messagesService.unreadNumber().subscribe(res => {
       this.unseen = res.unseen;
+      console.log(res.unseen);
     });
   }
 

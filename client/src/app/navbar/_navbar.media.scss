@@ -55,5 +55,13 @@
 @media screen and (max-width: 900px) {
     .sidenav {
         width: 80%;
+
+        .navbar-settings {
+            padding-top: 40px;
+        }
+
+        .search {
+            padding-top: 60px;
+        }
     }
 }
