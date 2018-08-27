@@ -1,16 +1,18 @@
-<div *ngIf="ready === true">
-    <div class="background"></div>
-    <div class="profile text-center">
-      <img src="{{avatarUrl}}" alt="{{user.fullname}}">
-      <p class="name">{{user.fullname}}</p>
-      <flash-messages></flash-messages>
-      <textarea [(ngModel)]="message" rows="5" class="form-control" placeholder="Write {{user.fullname.slice(0, user.fullname.indexOf(' '))}} a meessage"></textarea>
-      <button (click)="sendMessage()" class="btn-default">Send</button>
-  
-    </div>
-  </div>
+<div *ngIf="ready === true && loading === false">
+  <div class="background"></div>
+  <div class="profile text-center">
+    <img src="{{avatarUrl}}" alt="{{user.fullname}}">
+    <p class="name">{{user.fullname}}</p>
+    <flash-messages></flash-messages>
+    <textarea [(ngModel)]="message" rows="5" class="form-control" placeholder="Write {{user.fullname.slice(0, user.fullname.indexOf(' '))}} a meessage"></textarea>
+    <button (click)="sendMessage()" class="btn-default">Send</button>
 
-  <div class="not-found text-center" *ngIf="notFound === true">
-    <h3>404!</h3>
-    <p>Oops! The page you're looking for doesn't exist</p>
   </div>
+</div>
+
+<div class="not-found text-center" *ngIf="notFound === true">
+  <h3>404!</h3>
+  <p>Oops! The page you're looking for doesn't exist</p>
+</div>
+
+<div class="lds-ellipsis" *ngIf="loading === true"><div></div><div></div><div></div><div></div></div>

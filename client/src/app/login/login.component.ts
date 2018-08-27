@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
+  loading: boolean = false;
+
   constructor(private auth: AuthService, private flashMessages: FlashMessagesService) { }
 
   ngOnInit() {
@@ -46,6 +48,7 @@ export class LoginComponent implements OnInit {
 
   onFormSubmit() {
     if (this.isReady()) {
+      this.loading = true;
       let oldUser: OldUser = {username: this.username, password: this.password}
       this.auth.logIn(oldUser).subscribe((res) => {
         this.auth.saveUser(res);
@@ -56,6 +59,7 @@ export class LoginComponent implements OnInit {
         if (err.status === 401) {
           this.flashMessages.show("Invalid creditentials", {cssClass: 'alert-danger', timeout: 2000});
           $('form input').addClass('error');
+          this.loading = false;
         }
       })
     } else {

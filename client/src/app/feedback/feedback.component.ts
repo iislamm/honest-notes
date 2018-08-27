@@ -12,6 +12,8 @@ export class FeedbackComponent implements OnInit {
   message: string;
   sent: boolean = false;
 
+  loading: boolean = false;
+
   constructor(private messagesService: MessagesService, private flashMessages: FlashMessagesService) { }
 
   ngOnInit() {
@@ -22,9 +24,12 @@ export class FeedbackComponent implements OnInit {
     if (this.message.length < 5) {
       this.flashMessages.show("Explain more details so we can help you.", {cssClass: 'alert-danger', timeout: 10000});
     } else {
+      this.loading = true;
       this.messagesService.newFeedback(this.message).subscribe(res => {
         this.sent = true;
+        this.loading = false;
       }, () => {
+        this.loading = false;
         this.flashMessages.show("An unexpected error occured. Please try again later", {cssClass: 'alert-danger', timeout: 10000});
       })
     }

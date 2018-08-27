@@ -1,4 +1,4 @@
-<div *ngIf="sent === false">
+<div *ngIf="sent === false && loading === false">
   <div class="header text-center">
     <h3>We would like to hear from you!</h3>
     <p>Your feedback helps us to better service.</p>
@@ -12,9 +12,11 @@
   </div>
 </div>
 
-<div *ngIf="sent === true">
+<div *ngIf="sent === true && loading === false">
     <div class="header text-center">
         <h3>Thank you!</h3>
         <p>Your message has been sent</p>
       </div>
 </div>
+
+<div class="lds-ellipsis" *ngIf="loading === true"><div></div><div></div><div></div><div></div></div>

@@ -9,6 +9,7 @@ import { AuthGuard } from '../auth.guard';
 import { FeedbackComponent } from '../feedback/feedback.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { SettingsComponent } from '../settings/settings.component';
+import { CardsComponent } from '../cards/cards.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'feedback', component: FeedbackComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: 'cards', component: CardsComponent },
   { path: ':id', component: UserDetailsComponent, canActivate: [AuthGuard] }
 ]
 

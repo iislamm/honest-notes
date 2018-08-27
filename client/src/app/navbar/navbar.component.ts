@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, AfterContentChecked, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, AfterContentChecked, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -33,7 +33,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     private userService: UserService,
     private router: Router,
     private media: MediaMatcher,
-    private sidenavService: SidenavService
+    private sidenavService: SidenavService,
+    private cdr: ChangeDetectorRef
   ) {
 
     this.avatarUrl = this.auth.avatarUrl();
@@ -46,6 +47,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.updateNavbar();
+    this.cdr.detectChanges();
   }
 
   // ngAfterContentChecked() {

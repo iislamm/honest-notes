@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../user';
@@ -19,11 +19,15 @@ export class UserDetailsComponent implements OnInit {
 
   message: string;
 
+  loading: boolean = false;
+
   constructor(private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router,
     private messagesService: MessagesService,
-    private flashMessages: FlashMessagesService) { }
+    private flashMessages: FlashMessagesService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     this.getUser();
@@ -47,11 +51,18 @@ export class UserDetailsComponent implements OnInit {
   }
 
   sendMessage(): void {
+    this.loading = true;
     this.messagesService.newMessage(this.message, this.user._id).subscribe(res => {
-      this.flashMessages.show("Your message has been sent.", {cssClass: 'alert-success', timeout: 40000});
-      this.message = "";
+    this.cdr.detectChanges();
+    this.loading = false;
+    setTimeout(() => {this.flashMessages.show("Your message has been sent.", {cssClass: 'alert-success', timeout: 40000});}, 250);
+    
+    this.cdr.detectChanges();
+    this.message = "";
+    this.cdr.detectChanges();
       console.log(res);
     }, err => {
+      this.loading = false;
       this.flashMessages.show("Unexpected error occured. Please refresh the page and try again", {cssClass: 'alert-danger', timeout: 40000});
     })
   }

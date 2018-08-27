@@ -18,9 +18,12 @@ export class MessagesComponent implements OnInit {
 
   status: string = 'recieved';
 
+  ready: boolean = false;
+
   constructor(private messagesService: MessagesService, private auth: AuthService) {
     this.messagesService.getRecieved().subscribe(res=> {
       this.recieved = res.messages;
+      this.ready = true;
       this.recieved.forEach(message => {
         let timezone;
 
@@ -33,6 +36,7 @@ export class MessagesComponent implements OnInit {
     });
 
     this.messagesService.getSent().subscribe(res=> {
+      this.ready = true;
       this.sent = res.messages;
       this.sent.forEach(message => {
         let timezone;

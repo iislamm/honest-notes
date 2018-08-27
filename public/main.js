@@ -559,7 +559,7 @@ var AuthGuard = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  cards works!\n</p>\n"
+module.exports = "<div class=\"lds-ellipsis\"><div></div><div></div><div></div><div></div></div>"
 
 /***/ }),
 
@@ -690,7 +690,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"sent === false\">\n  <div class=\"header text-center\">\n    <h3>We would like to hear from you!</h3>\n    <p>Your feedback helps us to better service.</p>\n  </div>\n\n  <div class=\"content text-center\">\n    <flash-messages></flash-messages>\n    <textarea [(ngModel)]=\"message\" rows=\"10\" class=\"form-control\" placeholder=\"Tell us your feedback\"></textarea>\n    <br>\n    <button (click)=\"onSend()\" class=\"btn-default\">Send</button>\n  </div>\n</div>\n\n<div *ngIf=\"sent === true\">\n    <div class=\"header text-center\">\n        <h3>Thank you!</h3>\n        <p>Your message has been sent</p>\n      </div>\n</div>"
+module.exports = "<div *ngIf=\"sent === false && loading === false\">\n  <div class=\"header text-center\">\n    <h3>We would like to hear from you!</h3>\n    <p>Your feedback helps us to better service.</p>\n  </div>\n\n  <div class=\"content text-center\">\n    <flash-messages></flash-messages>\n    <textarea [(ngModel)]=\"message\" rows=\"10\" class=\"form-control\" placeholder=\"Tell us your feedback\"></textarea>\n    <br>\n    <button (click)=\"onSend()\" class=\"btn-default\">Send</button>\n  </div>\n</div>\n\n<div *ngIf=\"sent === true && loading === false\">\n    <div class=\"header text-center\">\n        <h3>Thank you!</h3>\n        <p>Your message has been sent</p>\n      </div>\n</div>\n\n<div class=\"lds-ellipsis\" *ngIf=\"loading === true\"><div></div><div></div><div></div><div></div></div>"
 
 /***/ }),
 
@@ -736,6 +736,7 @@ var FeedbackComponent = /** @class */ (function () {
         this.messagesService = messagesService;
         this.flashMessages = flashMessages;
         this.sent = false;
+        this.loading = false;
     }
     FeedbackComponent.prototype.ngOnInit = function () {
     };
@@ -746,9 +747,12 @@ var FeedbackComponent = /** @class */ (function () {
             this.flashMessages.show("Explain more details so we can help you.", { cssClass: 'alert-danger', timeout: 10000 });
         }
         else {
+            this.loading = true;
             this.messagesService.newFeedback(this.message).subscribe(function (res) {
                 _this.sent = true;
+                _this.loading = false;
             }, function () {
+                _this.loading = false;
                 _this.flashMessages.show("An unexpected error occured. Please try again later", { cssClass: 'alert-danger', timeout: 10000 });
             });
         }
@@ -845,7 +849,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "form {\r\n    width: 90%;\r\n    margin: auto;\r\n}\r\n\r\n.modal-footer {\r\n    text-align: center;\r\n    border: none;\r\n}"
+module.exports = "form {\r\n    width: 90%;\r\n    margin: auto;\r\n}\r\n\r\n.modal-footer {\r\n    text-align: center;\r\n    border: none;\r\n}\r\n\r\n.cover {\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 100%;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-color: #fff;\r\n}\r\n\r\n.lds-ellipsis {\r\n    top: 30px;\r\n    left: 25%;\r\n}"
 
 /***/ }),
 
@@ -856,7 +860,7 @@ module.exports = "form {\r\n    width: 90%;\r\n    margin: auto;\r\n}\r\n\r\n.mo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form (ngSubmit)=\"onFormSubmit()\">\n  <flash-messages></flash-messages>\n  <div class=\"form-group\">\n    <input [(ngModel)]=\"username\" (blur)=\"validateInputs($event)\" type=\"text\" name=\"username\" class=\"form-control\" placeholder=\"Username or E-mail\">\n  </div>\n  <div class=\"form-group\">\n      <input [(ngModel)]=\"password\" (blur)=\"validateInputs($event)\" type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Password\">\n  </div>\n    <div class=\"modal-footer\">\n      <button type=\"submit\" class=\"btn btn-default\">Sign In</button>\n    </div>\n</form>"
+module.exports = "<form (ngSubmit)=\"onFormSubmit()\" >\n  <flash-messages></flash-messages>\n  <div class=\"form-group\">\n    <input [(ngModel)]=\"username\" (blur)=\"validateInputs($event)\" type=\"text\" name=\"username\" class=\"form-control\" placeholder=\"Username or E-mail\">\n  </div>\n  <div class=\"form-group\">\n      <input [(ngModel)]=\"password\" (blur)=\"validateInputs($event)\" type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Password\">\n  </div>\n    <div class=\"modal-footer\">\n      <button type=\"submit\" class=\"btn btn-default\">Sign In</button>\n    </div>\n    <div class=\"cover\" *ngIf=\"loading === true\">\n      <div class=\"lds-ellipsis\"><div></div><div></div><div></div><div></div></div>\n    </div>\n</form>"
 
 /***/ }),
 
@@ -893,6 +897,7 @@ var LoginComponent = /** @class */ (function () {
     function LoginComponent(auth, flashMessages) {
         this.auth = auth;
         this.flashMessages = flashMessages;
+        this.loading = false;
     }
     LoginComponent.prototype.ngOnInit = function () {
     };
@@ -919,6 +924,7 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.onFormSubmit = function () {
         var _this = this;
         if (this.isReady()) {
+            this.loading = true;
             var oldUser = { username: this.username, password: this.password };
             this.auth.logIn(oldUser).subscribe(function (res) {
                 _this.auth.saveUser(res);
@@ -929,6 +935,7 @@ var LoginComponent = /** @class */ (function () {
                 if (err.status === 401) {
                     _this.flashMessages.show("Invalid creditentials", { cssClass: 'alert-danger', timeout: 2000 });
                     jquery__WEBPACK_IMPORTED_MODULE_2__('form input').addClass('error');
+                    _this.loading = false;
                 }
             });
         }
@@ -958,7 +965,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"cards-container\">\n  <div class=\"status text-center\">\n    <span [ngClass]=\"{'active': status === 'recieved'}\" (click)=\"changeStatus('recieved')\">Recieved</span> | <span [ngClass]=\"{'active': status === 'sent'}\" (click)=\"changeStatus('sent')\">Sent</span>\n  </div>\n\n  <div *ngIf=\"status === 'recieved'\" class=\"recieved\">\n    <div class=\"card\" *ngFor=\"let message of recieved\">\n      <div class=\"content\">{{message.content}}</div>\n      <div class=\"date\">{{message.sendDate.slice(0,-9).replace('T', ' at ')}}</div>\n    </div>\n  </div>\n\n  <div *ngIf=\"status === 'sent'\" class=\"sent\">\n      <div class=\"card\" *ngFor=\"let message of sent\">\n        <div class=\"content\">{{message.content}}</div>\n        <div class=\"date\">To: {{message.recieverName}}</div>\n        <div class=\"date\">{{message.sendDate.slice(0,-9).replace('T', ' at ')}}</div>\n      </div>\n    </div>\n  \n\n</div>"
+module.exports = "<div class=\"cards-container\" *ngIf=\"ready === true\">\n  <div class=\"status text-center\">\n    <span [ngClass]=\"{'active': status === 'recieved'}\" (click)=\"changeStatus('recieved')\">Recieved</span> | <span [ngClass]=\"{'active': status === 'sent'}\" (click)=\"changeStatus('sent')\">Sent</span>\n  </div>\n\n  <div *ngIf=\"status === 'recieved'\" class=\"recieved\">\n    <div class=\"card\" *ngFor=\"let message of recieved\">\n      <div class=\"content\">{{message.content}}</div>\n      <div class=\"date\">{{message.sendDate.slice(0,-9).replace('T', ' at ')}}</div>\n    </div>\n  </div>\n\n  <div *ngIf=\"status === 'sent'\" class=\"sent\">\n    <div class=\"card\" *ngFor=\"let message of sent\">\n      <div class=\"content\">{{message.content}}</div>\n      <div class=\"date\">To: {{message.recieverName}}</div>\n      <div class=\"date\">{{message.sendDate.slice(0,-9).replace('T', ' at ')}}</div>\n    </div>\n  </div>\n</div>\n\n<div class=\"lds-ellipsis\" *ngIf=\"ready === false\"><div></div><div></div><div></div><div></div></div>"
 
 /***/ }),
 
@@ -1007,8 +1014,10 @@ var MessagesComponent = /** @class */ (function () {
         this.messagesService = messagesService;
         this.auth = auth;
         this.status = 'recieved';
+        this.ready = false;
         this.messagesService.getRecieved().subscribe(function (res) {
             _this.recieved = res.messages;
+            _this.ready = true;
             _this.recieved.forEach(function (message) {
                 var timezone;
                 _this.auth.getUser(message['reciever']).subscribe(function (user) {
@@ -1018,6 +1027,7 @@ var MessagesComponent = /** @class */ (function () {
             });
         });
         this.messagesService.getSent().subscribe(function (res) {
+            _this.ready = true;
             _this.sent = res.messages;
             _this.sent.forEach(function (message) {
                 var timezone;
@@ -1117,13 +1127,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent(messagesService, auth, userService, router, media, sidenavService) {
+    function NavbarComponent(messagesService, auth, userService, router, media, sidenavService, cdr) {
         this.messagesService = messagesService;
         this.auth = auth;
         this.userService = userService;
         this.router = router;
         this.media = media;
         this.sidenavService = sidenavService;
+        this.cdr = cdr;
         this.faCog = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faCog"];
         this.faBars = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faBars"];
         this.smallscreen = false;
@@ -1134,6 +1145,7 @@ var NavbarComponent = /** @class */ (function () {
     // }
     NavbarComponent.prototype.ngAfterViewInit = function () {
         this.updateNavbar();
+        this.cdr.detectChanges();
     };
     // ngAfterContentChecked() {
     //   this.updateNavbar();
@@ -1239,7 +1251,8 @@ var NavbarComponent = /** @class */ (function () {
             _services_user_service__WEBPACK_IMPORTED_MODULE_7__["UserService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"],
             _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_1__["MediaMatcher"],
-            _services_sidenav_service__WEBPACK_IMPORTED_MODULE_9__["SidenavService"]])
+            _services_sidenav_service__WEBPACK_IMPORTED_MODULE_9__["SidenavService"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -1634,12 +1647,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _feedback_feedback_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../feedback/feedback.component */ "./src/app/feedback/feedback.component.ts");
 /* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../profile/profile.component */ "./src/app/profile/profile.component.ts");
 /* harmony import */ var _settings_settings_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../settings/settings.component */ "./src/app/settings/settings.component.ts");
+/* harmony import */ var _cards_cards_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../cards/cards.component */ "./src/app/cards/cards.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1658,6 +1673,7 @@ var routes = [
     { path: 'feedback', component: _feedback_feedback_component__WEBPACK_IMPORTED_MODULE_8__["FeedbackComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
     { path: 'profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_9__["ProfileComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
     { path: 'settings', component: _settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
+    { path: 'cards', component: _cards_cards_component__WEBPACK_IMPORTED_MODULE_11__["CardsComponent"] },
     { path: ':id', component: _user_details_user_details_component__WEBPACK_IMPORTED_MODULE_6__["UserDetailsComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] }
 ];
 var RoutingModule = /** @class */ (function () {
@@ -2386,7 +2402,7 @@ var SettingsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"ready === true\">\n    <div class=\"background\"></div>\n    <div class=\"profile text-center\">\n      <img src=\"{{avatarUrl}}\" alt=\"{{user.fullname}}\">\n      <p class=\"name\">{{user.fullname}}</p>\n      <flash-messages></flash-messages>\n      <textarea [(ngModel)]=\"message\" rows=\"5\" class=\"form-control\" placeholder=\"Write {{user.fullname.slice(0, user.fullname.indexOf(' '))}} a meessage\"></textarea>\n      <button (click)=\"sendMessage()\" class=\"btn-default\">Send</button>\n  \n    </div>\n  </div>\n\n  <div class=\"not-found text-center\" *ngIf=\"notFound === true\">\n    <h3>404!</h3>\n    <p>Oops! The page you're looking for doesn't exist</p>\n  </div>"
+module.exports = "<div *ngIf=\"ready === true && loading === false\">\n  <div class=\"background\"></div>\n  <div class=\"profile text-center\">\n    <img src=\"{{avatarUrl}}\" alt=\"{{user.fullname}}\">\n    <p class=\"name\">{{user.fullname}}</p>\n    <flash-messages></flash-messages>\n    <textarea [(ngModel)]=\"message\" rows=\"5\" class=\"form-control\" placeholder=\"Write {{user.fullname.slice(0, user.fullname.indexOf(' '))}} a meessage\"></textarea>\n    <button (click)=\"sendMessage()\" class=\"btn-default\">Send</button>\n\n  </div>\n</div>\n\n<div class=\"not-found text-center\" *ngIf=\"notFound === true\">\n  <h3>404!</h3>\n  <p>Oops! The page you're looking for doesn't exist</p>\n</div>\n\n<div class=\"lds-ellipsis\" *ngIf=\"loading === true\"><div></div><div></div><div></div><div></div></div>"
 
 /***/ }),
 
@@ -2432,14 +2448,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var UserDetailsComponent = /** @class */ (function () {
-    function UserDetailsComponent(auth, route, router, messagesService, flashMessages) {
+    function UserDetailsComponent(auth, route, router, messagesService, flashMessages, cdr) {
         this.auth = auth;
         this.route = route;
         this.router = router;
         this.messagesService = messagesService;
         this.flashMessages = flashMessages;
+        this.cdr = cdr;
         this.ready = false;
         this.notFound = false;
+        this.loading = false;
     }
     UserDetailsComponent.prototype.ngOnInit = function () {
         this.getUser();
@@ -2463,11 +2481,17 @@ var UserDetailsComponent = /** @class */ (function () {
     };
     UserDetailsComponent.prototype.sendMessage = function () {
         var _this = this;
+        this.loading = true;
         this.messagesService.newMessage(this.message, this.user._id).subscribe(function (res) {
-            _this.flashMessages.show("Your message has been sent.", { cssClass: 'alert-success', timeout: 40000 });
+            _this.cdr.detectChanges();
+            _this.loading = false;
+            setTimeout(function () { _this.flashMessages.show("Your message has been sent.", { cssClass: 'alert-success', timeout: 40000 }); }, 250);
+            _this.cdr.detectChanges();
             _this.message = "";
+            _this.cdr.detectChanges();
             console.log(res);
         }, function (err) {
+            _this.loading = false;
             _this.flashMessages.show("Unexpected error occured. Please refresh the page and try again", { cssClass: 'alert-danger', timeout: 40000 });
         });
     };
@@ -2481,7 +2505,8 @@ var UserDetailsComponent = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             _services_messages_service__WEBPACK_IMPORTED_MODULE_3__["MessagesService"],
-            angular2_flash_messages__WEBPACK_IMPORTED_MODULE_4__["FlashMessagesService"]])
+            angular2_flash_messages__WEBPACK_IMPORTED_MODULE_4__["FlashMessagesService"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
     ], UserDetailsComponent);
     return UserDetailsComponent;
 }());
