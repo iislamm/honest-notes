@@ -1,8 +1,22 @@
 $mainColor: #566BFF;
 $navPadding: 15%;
 
-ul#slide-out::-webkit-scrollbar {
+mat-sidenav::-webkit-scrollbar {
     width: 0;
+}
+
+mat-sidenav-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 nav {
@@ -24,7 +38,7 @@ nav {
     }
 }
 
-.sidenav {
+mat-sidenav {
     width: 25%;
     background-color: #333;
     color: #fff;

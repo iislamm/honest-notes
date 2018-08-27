@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, AfterContentChecked, AfterViewChecked } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
@@ -6,30 +7,53 @@ import { MessagesService } from '../services/messages.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { MatSidenav } from '@angular/material/sidenav';
+import { SidenavService } from '../services/sidenav.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
 
+export class NavbarComponent implements OnInit, AfterViewInit {
+  @ViewChild('sidenav') public sidenav: MatSidenav;
   faCog = faCog;
   faBars = faBars;
   unseen: number;
   avatarUrl: string;
-
   search: string;
-
   currentUrl: string;
 
-  constructor(public messagesService: MessagesService, private auth: AuthService, private userService: UserService, private router: Router) {
+  smallscreen: boolean = false;
+
+  constructor(
+    public messagesService: MessagesService,
+    private auth: AuthService,
+    private userService: UserService,
+    private router: Router,
+    private media: MediaMatcher,
+    private sidenavService: SidenavService
+  ) {
 
     this.avatarUrl = this.auth.avatarUrl();
 
   }
 
+  // ngAfterViewChecked() {
+  //   this.updateUnread();
+  // }
+
+  ngAfterViewInit() {
+    this.updateNavbar();
+  }
+
+  // ngAfterContentChecked() {
+  //   this.updateNavbar();
+  // }
+
   ngOnInit() {
+    // this.sidenavService.setSidenav(this.sidenav);
 
     this.updateUnread();
 
@@ -46,13 +70,47 @@ export class NavbarComponent implements OnInit {
       $('.collapsed-nav-content').height($(window).height());
     }
 
-    $(window).resize(function() {
-      if ($(window).height() < 500) {
-        $('#collapsed-nav-content').height(500);
-      } else {
-        $('#collapsed-nav-content').height($(window).height());
-      }
-    })
+    this.updateNavbar();
+  }
+
+  onBackdropClick(): void {
+    this.sidenav.open();
+    console.log('ran');
+    console.log($(window).width() <= 900)
+    if ($(window).width() <= 900) {
+      this.sidenav.close();
+    } else {
+      this.sidenav.open();
+    }
+  }
+
+  updateHeight(event) {
+    this.updateNavbar()
+    if (event.target.innerHeight < 500) {
+      $('#collapsed-nav-content').height(500);
+    } else {
+      $('#collapsed-nav-content').height($(window).height());
+    }
+  }
+
+  onLinkClick(): void {
+    if ($(window).width() < 900) {
+      this.sidenav.close();
+    } else {
+      this.sidenav.open();
+    }
+  }
+
+  updateNavbar(): void {
+    if (this.media.matchMedia('(min-width: 900px)').matches == true) {
+      this.smallscreen = false;
+      $('.mat-drawer-backdrop').hide();
+      this.sidenav.open();
+    } else {
+      this.smallscreen = true;
+      $('.mat-drawer-backdrop').show();
+      this.sidenav.close();
+    }
   }
 
   updateUnread(): void {

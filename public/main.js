@@ -310,7 +310,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@media (min-width: 901px) {\r\n    .page-content {\r\n        margin-left: 25%;\r\n    }\r\n}\r\n\r\n@media (max-width: 900px) {\r\n    .page-content {\r\n        margin-top: 55px;\r\n    }\r\n}"
+module.exports = "@media (min-width: 901px) {\r\n    .page-content {\r\n        margin-left: 25%;\r\n    }\r\n}"
 
 /***/ }),
 
@@ -321,7 +321,7 @@ module.exports = "@media (min-width: 901px) {\r\n    .page-content {\r\n        
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"isLoggedIn === true\">\r\n    <app-navbar></app-navbar>\r\n    <div class=\"page-content\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>\r\n\r\n<app-home *ngIf=\"isLoggedIn === false\"></app-home>"
+module.exports = "<div *ngIf=\"isLoggedIn === true\">\r\n    <app-navbar></app-navbar>\r\n</div>\r\n\r\n<app-home *ngIf=\"isLoggedIn === false\"></app-home>"
 
 /***/ }),
 
@@ -389,30 +389,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
 /* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
 /* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/angular-fontawesome */ "./node_modules/@fortawesome/angular-fontawesome/fesm5/angular-fontawesome.js");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
-/* harmony import */ var _services_validation_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/validation.service */ "./src/app/services/validation.service.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
-/* harmony import */ var _routing_routing_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./routing/routing.module */ "./src/app/routing/routing.module.ts");
-/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
-/* harmony import */ var _cards_cards_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./cards/cards.component */ "./src/app/cards/cards.component.ts");
-/* harmony import */ var _messages_messages_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./messages/messages.component */ "./src/app/messages/messages.component.ts");
-/* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./search/search.component */ "./src/app/search/search.component.ts");
-/* harmony import */ var _user_details_user_details_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./user-details/user-details.component */ "./src/app/user-details/user-details.component.ts");
-/* harmony import */ var _feedback_feedback_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./feedback/feedback.component */ "./src/app/feedback/feedback.component.ts");
-/* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
-/* harmony import */ var _settings_settings_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./settings/settings.component */ "./src/app/settings/settings.component.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/sidenav */ "./node_modules/@angular/material/esm5/sidenav.es5.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fortawesome/angular-fontawesome */ "./node_modules/@fortawesome/angular-fontawesome/fesm5/angular-fontawesome.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+/* harmony import */ var _services_validation_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/validation.service */ "./src/app/services/validation.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
+/* harmony import */ var _routing_routing_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./routing/routing.module */ "./src/app/routing/routing.module.ts");
+/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
+/* harmony import */ var _cards_cards_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./cards/cards.component */ "./src/app/cards/cards.component.ts");
+/* harmony import */ var _messages_messages_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./messages/messages.component */ "./src/app/messages/messages.component.ts");
+/* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./search/search.component */ "./src/app/search/search.component.ts");
+/* harmony import */ var _user_details_user_details_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./user-details/user-details.component */ "./src/app/user-details/user-details.component.ts");
+/* harmony import */ var _feedback_feedback_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./feedback/feedback.component */ "./src/app/feedback/feedback.component.ts");
+/* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
+/* harmony import */ var _settings_settings_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./settings/settings.component */ "./src/app/settings/settings.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -453,27 +457,27 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_9__["HomeComponent"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"],
-                _register_register_component__WEBPACK_IMPORTED_MODULE_11__["RegisterComponent"],
-                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_14__["DashboardComponent"],
-                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_16__["NavbarComponent"],
-                _cards_cards_component__WEBPACK_IMPORTED_MODULE_17__["CardsComponent"],
-                _messages_messages_component__WEBPACK_IMPORTED_MODULE_18__["MessagesComponent"],
-                _search_search_component__WEBPACK_IMPORTED_MODULE_19__["SearchComponent"],
-                _user_details_user_details_component__WEBPACK_IMPORTED_MODULE_20__["UserDetailsComponent"],
-                _feedback_feedback_component__WEBPACK_IMPORTED_MODULE_21__["FeedbackComponent"],
-                _profile_profile_component__WEBPACK_IMPORTED_MODULE_22__["ProfileComponent"],
-                _settings_settings_component__WEBPACK_IMPORTED_MODULE_23__["SettingsComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_12__["LoginComponent"],
+                _register_register_component__WEBPACK_IMPORTED_MODULE_13__["RegisterComponent"],
+                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_16__["DashboardComponent"],
+                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_18__["NavbarComponent"],
+                _cards_cards_component__WEBPACK_IMPORTED_MODULE_19__["CardsComponent"],
+                _messages_messages_component__WEBPACK_IMPORTED_MODULE_20__["MessagesComponent"],
+                _search_search_component__WEBPACK_IMPORTED_MODULE_21__["SearchComponent"],
+                _user_details_user_details_component__WEBPACK_IMPORTED_MODULE_22__["UserDetailsComponent"],
+                _feedback_feedback_component__WEBPACK_IMPORTED_MODULE_23__["FeedbackComponent"],
+                _profile_profile_component__WEBPACK_IMPORTED_MODULE_24__["ProfileComponent"],
+                _settings_settings_component__WEBPACK_IMPORTED_MODULE_25__["SettingsComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeModule"],
+                _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FontAwesomeModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
-                _routing_routing_module__WEBPACK_IMPORTED_MODULE_15__["RoutingModule"],
+                _routing_routing_module__WEBPACK_IMPORTED_MODULE_17__["RoutingModule"],
                 _angular_http__WEBPACK_IMPORTED_MODULE_3__["HttpModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
                 _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_4__["JwtModule"].forRoot({
                     config: {
@@ -482,10 +486,12 @@ var AppModule = /** @class */ (function () {
                         blacklistedRoutes: ['localhost:4200/auth/']
                     }
                 }),
-                angular2_flash_messages__WEBPACK_IMPORTED_MODULE_5__["FlashMessagesModule"].forRoot()
+                angular2_flash_messages__WEBPACK_IMPORTED_MODULE_5__["FlashMessagesModule"].forRoot(),
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
+                _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_7__["MatSidenavModule"]
             ],
-            providers: [_services_auth_service__WEBPACK_IMPORTED_MODULE_8__["AuthService"], _services_validation_service__WEBPACK_IMPORTED_MODULE_12__["ValidationService"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
+            providers: [_services_auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"], _services_validation_service__WEBPACK_IMPORTED_MODULE_14__["ValidationService"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -1054,7 +1060,7 @@ var MessagesComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <nav class=\"navbar-custom\">\n  <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" id=\"collapse-toggle\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n    <a class=\"navbar-brand\" [routerLink]=\"['/']\"><img src=\"./assets/logo.png\" alt=\"Honest Notes\"></a>\n  </div>\n  <div class=\"collapse-nav\" id=\"co1lapsed-nav\">\n\n    <div class=\"collapsed-nav-content\">\n      \n      <div class=\"navbar-settings\">\n        <a class=\"profile-picture\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/profile']\"><img src=\"{{avatarUrl}}\" alt=\"Profile Picture\"></a>\n        <div class=\"settings\">\n          <a [routerLink]=\"['/settings']\">\n            <fa-icon [icon]=\"faCog\"></fa-icon>\n          </a>\n\n        </div>\n      </div>\n\n      <div class=\"search\">\n        <input type=\"text\" [(ngModel)]=\"search\" class=\"form-control\" placeholder=\"Search...\" (keyup)=\"onSearch()\">\n      </div>\n\n      <div class=\"nav-body\">\n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/']\">Home</a>\n        </div>\n        \n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/messages']\">Messages <div *ngIf=\"unseen != 0\" class=\"unread\">{{unseen}}</div></a>\n        </div>\n\n        <div class=\"nav-item\">\n          <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/feedback']\">Send Feedback</a>\n        </div>\n\n        <div class=\"nav-item\">\n          <a (click)=\"logOut()\" href=\"#\">Log out</a>\n        </div>\n\n      </div>\n\n      <div class=\"footer\">\n        <p>All rights reserved to <a href=\"http://islamelbanna.info\" target=\"_blank\">Islam Mohamed</a></p>\n        <a href=\"#\">Terms of use</a>\n      </div>\n    </div>\n  </div>\n</nav> -->\n\n<nav class=\"visible-xs\">\n  <a class=\"navbar-brand\" [routerLink]=\"['/']\"><img src=\"./assets/logo.png\" alt=\"Honest Notes\"></a>\n    <a href=\"#\" data-target=\"slide-out\" class=\"sidenav-trigger\">\n        <fa-icon [icon]=\"faBars\"></fa-icon>\n    </a>\n</nav>\n\n<ul id=\"slide-out\" class=\"sidenav sidenav-fixed\">\n    <div class=\"navbar-header\">\n      <a class=\"navbar-brand\" [routerLink]=\"['/']\"><img src=\"./assets/logo.png\" alt=\"Honest Notes\"></a>\n    </div>\n    <div class=\"collapse-nav\" id=\"co1lapsed-nav\">\n  \n      <div class=\"collapsed-nav-content\">\n        \n        <div class=\"navbar-settings\">\n          <a class=\"profile-picture\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/profile']\"><img src=\"{{avatarUrl}}\" alt=\"Profile Picture\"></a>\n          <div class=\"settings\">\n            <a [routerLink]=\"['/settings']\">\n              <fa-icon [icon]=\"faCog\"></fa-icon>\n            </a>\n  \n          </div>\n        </div>\n  \n        <div class=\"search\">\n          <input type=\"text\" [(ngModel)]=\"search\" class=\"form-control\" placeholder=\"Search...\" (keyup)=\"onSearch()\">\n        </div>\n  \n        <div class=\"nav-body\">\n          <div class=\"nav-item\">\n            <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/']\">Home</a>\n          </div>\n          \n          <div class=\"nav-item\">\n            <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/messages']\">Messages <div *ngIf=\"unseen != 0\" class=\"unread\">{{unseen}}</div></a>\n          </div>\n  \n          <div class=\"nav-item\">\n            <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/feedback']\">Send Feedback</a>\n          </div>\n  \n          <div class=\"nav-item\">\n            <a (click)=\"logOut()\" href=\"#\">Log out</a>\n          </div>\n  \n        </div>\n  \n        <div class=\"footer\">\n          <p>All rights reserved to <a href=\"http://islamelbanna.info\" target=\"_blank\">Islam Mohamed</a></p>\n          <a href=\"#\">Terms of use</a>\n        </div>\n      </div>\n    </div>\n</ul>"
+module.exports = "<mat-sidenav-container (backdropClick)=\"sidenav.open()\" (window:resize)=\"updateHeight($event)\">\n  <mat-sidenav #sidenav role=\"navigation\" autoFocus=\"false\">\n    <div class=\"navbar-header hidden-sm hidden-xs\">\n        <a class=\"navbar-brand\" [routerLink]=\"['/']\"><img src=\"./assets/logo.png\" alt=\"Honest Notes\" (click)=\"onLinkClick()\"></a>\n      </div>\n      <div class=\"collapse-nav\" id=\"co1lapsed-nav\">\n    \n        <div class=\"collapsed-nav-content\">\n          \n          <div class=\"navbar-settings\">\n            <a class=\"profile-picture\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/profile']\"><img src=\"{{avatarUrl}}\" alt=\"Profile Picture\" (click)=\"onLinkClick()\"></a>\n            <div class=\"settings\">\n              <a [routerLink]=\"['/settings']\" (click)=\"onLinkClick()\">\n                <fa-icon [icon]=\"faCog\"></fa-icon>\n              </a>\n    \n            </div>\n          </div>\n    \n          <div class=\"search\">\n            <input type=\"text\" [(ngModel)]=\"search\" class=\"form-control\" placeholder=\"Search...\" (keyup)=\"onSearch()\" (keydown.enter)=\"onLinkClick()\">\n          </div>\n    \n          <div class=\"nav-body\">\n            <div class=\"nav-item\">\n              <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/']\" (click)=\"onLinkClick()\">Home</a>\n            </div>\n            \n            <div class=\"nav-item\">\n              <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/messages']\" (click)=\"onLinkClick()\">Messages <div *ngIf=\"unseen != 0\" class=\"unread\">{{unseen}}</div></a>\n            </div>\n    \n            <div class=\"nav-item\">\n              <a (click)=\"updateUnread()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{ exact: true }\" [routerLink]=\"['/feedback']\" (click)=\"onLinkClick()\">Send Feedback</a>\n            </div>\n    \n            <div class=\"nav-item\">\n              <a (click)=\"logOut()\" href=\"#\">Log out</a>\n            </div>\n    \n          </div>\n    \n          <div class=\"footer\">\n            <p>All rights reserved to <a href=\"http://islamelbanna.info\" target=\"_blank\">Islam Mohamed</a></p>\n            <a href=\"#\" (click)=\"onLinkClick()\">Terms of use</a>\n          </div>\n        </div>\n      </div>\n  </mat-sidenav>\n  <mat-sidenav-content>\n      <nav class=\"visible-sm visible-xs\">\n        <a class=\"navbar-brand\" [routerLink]=\"['/']\"><img src=\"./assets/logo.png\" alt=\"Honest Notes\"></a>\n          <button (click)=\"sidenav.toggle()\">\n              <fa-icon [icon]=\"faBars\"></fa-icon>\n          </button>\n      </nav>\n      <div class=\"page-content\">\n          <router-outlet></router-outlet>\n      </div>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n  <!-- <mat-sidenav-content>\n    <p><mat-checkbox [(ngModel)]=\"opened\">sidenav.opened</mat-checkbox></p>\n    <p><button mat-button (click)=\"sidenav.toggle()\">sidenav.toggle()</button></p>\n    <p>Events:</p>\n    <div class=\"example-events\">\n      <div *ngFor=\"let e of events\">{{e}}</div>\n    </div>\n  </mat-sidenav-content> -->"
 
 /***/ }),
 
@@ -1065,7 +1071,7 @@ module.exports = "<!-- <nav class=\"navbar-custom\">\n  <div class=\"navbar-head
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ul#slide-out::-webkit-scrollbar {\n  width: 0; }\n\nnav {\n  background-color: #333; }\n\nnav .navbar-brand {\n    width: 80%;\n    float: right; }\n\nnav img {\n    width: 60%;\n    float: right; }\n\nnav .slideout {\n    float: left; }\n\nnav .icon-bar {\n    border: 5px solid #fff; }\n\n.sidenav {\n  width: 25%;\n  background-color: #333;\n  color: #fff; }\n\n.sidenav .navbar-header .navbar-brand {\n    text-align: center; }\n\n.sidenav .navbar-header .navbar-brand img {\n      width: 80%;\n      margin: 0 auto; }\n\n.sidenav .navbar-settings {\n    padding-top: 75px;\n    padding-left: 15%;\n    padding-right: 15%;\n    height: 75px; }\n\n.sidenav .navbar-settings .profile-picture {\n      float: left;\n      margin-top: 3px;\n      border: 2px solid transparent;\n      border-radius: 50%; }\n\n.sidenav .navbar-settings .profile-picture img {\n        width: 65px;\n        height: 65px;\n        border-radius: 50%; }\n\n.sidenav .navbar-settings .profile-picture.active {\n        border: 2px solid #556bff; }\n\n.sidenav .navbar-settings .settings {\n      background-color: transparent;\n      box-shadow: none;\n      border: none;\n      float: right;\n      transition: all 1s; }\n\n.sidenav .navbar-settings .settings fa-icon {\n        font-size: 55px;\n        color: #fff; }\n\n.sidenav .navbar-settings .settings:hover, .sidenav .navbar-settings .settings:focus {\n        -webkit-transform: rotate(180deg);\n                transform: rotate(180deg);\n        transition: all 1s; }\n\n.sidenav .navbar-settings .settings .dropdown-menu {\n        position: static;\n        float: right;\n        width: 100%;\n        background-color: #333;\n        box-shadow: 0px 0px 5px 0px #111;\n        margin-bottom: 20px; }\n\n.sidenav .navbar-settings .settings .dropdown-menu a {\n          color: #eee;\n          padding-top: 10px;\n          padding-bottom: 10px; }\n\n.sidenav .navbar-settings .settings .dropdown-menu a:hover, .sidenav .navbar-settings .settings .dropdown-menu a:focus {\n          background-color: #555; }\n\n.sidenav .search {\n    padding-top: 75px; }\n\n.sidenav .search .form-control {\n      background-color: #555;\n      color: #fff;\n      font-size: 18px;\n      padding-top: 25px;\n      padding-bottom: 25px;\n      box-shadow: -8px 0px 9px 0px #111;\n      border: none;\n      height: auto;\n      padding: 18px 20px;\n      box-sizing: border-box; }\n\n.sidenav .search .form-control:focus {\n        box-shadow: -8px 10px 9px 0px #111; }\n\n.sidenav .nav-body {\n    margin-top: 30px; }\n\n.sidenav .nav-body .nav-item {\n      width: 100%; }\n\n.sidenav .nav-body .nav-item a {\n        padding: 10px 15%;\n        width: 100%;\n        color: #ddd;\n        font-size: 16px;\n        font-weight: bold;\n        display: block; }\n\n.sidenav .nav-body .nav-item a:hover, .sidenav .nav-body .nav-item a:focus, .sidenav .nav-body .nav-item a.active {\n          color: #eee;\n          background-color: #222;\n          text-decoration: none; }\n\n.sidenav .nav-body .nav-item a .unread {\n          font-size: 22px; }\n\n.sidenav .nav-body .nav-item .unread {\n        width: 33px;\n        height: 33px;\n        background-color: #CB1616;\n        display: inline-block;\n        text-align: center;\n        vertical-align: middle;\n        padding-top: 0;\n        border-radius: 50%;\n        margin-left: 10px; }\n\n.sidenav .collapsed-nav-content {\n    position: relative;\n    height: 93vh; }\n\n.sidenav .footer {\n    position: absolute;\n    bottom: 20px;\n    left: 0;\n    padding: 20px;\n    font-size: 16px; }\n\n.sidenav .footer p a, .sidenav .footer p a:hover, .sidenav .footer p a:focus {\n      color: #566BFF; }\n\n.sidenav .footer > a, .sidenav .footer > a:focus, .sidenav .footer > a:hover {\n      color: #ddd;\n      text-decoration: underline; }\n\n@media screen and (max-width: 900px) {\n  .sidenav {\n    width: 80%; }\n    .sidenav .navbar-settings {\n      padding-top: 40px; }\n    .sidenav .search {\n      padding-top: 60px; } }\n"
+module.exports = "mat-sidenav::-webkit-scrollbar {\n  width: 0; }\n\nmat-sidenav-container {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0; }\n\nbutton {\n  background-color: transparent;\n  border: none;\n  box-shadow: none; }\n\nnav {\n  background-color: #333; }\n\nnav .navbar-brand {\n    width: 80%;\n    float: right; }\n\nnav img {\n    width: 60%;\n    float: right; }\n\nnav .slideout {\n    float: left; }\n\nnav .icon-bar {\n    border: 5px solid #fff; }\n\nmat-sidenav {\n  width: 25%;\n  background-color: #333;\n  color: #fff; }\n\nmat-sidenav .navbar-header .navbar-brand {\n    text-align: center; }\n\nmat-sidenav .navbar-header .navbar-brand img {\n      width: 80%;\n      margin: 0 auto; }\n\nmat-sidenav .navbar-settings {\n    padding-top: 75px;\n    padding-left: 15%;\n    padding-right: 15%;\n    height: 75px; }\n\nmat-sidenav .navbar-settings .profile-picture {\n      float: left;\n      margin-top: 3px;\n      border: 2px solid transparent;\n      border-radius: 50%; }\n\nmat-sidenav .navbar-settings .profile-picture img {\n        width: 65px;\n        height: 65px;\n        border-radius: 50%; }\n\nmat-sidenav .navbar-settings .profile-picture.active {\n        border: 2px solid #556bff; }\n\nmat-sidenav .navbar-settings .settings {\n      background-color: transparent;\n      box-shadow: none;\n      border: none;\n      float: right;\n      transition: all 1s; }\n\nmat-sidenav .navbar-settings .settings fa-icon {\n        font-size: 55px;\n        color: #fff; }\n\nmat-sidenav .navbar-settings .settings:hover, mat-sidenav .navbar-settings .settings:focus {\n        -webkit-transform: rotate(180deg);\n                transform: rotate(180deg);\n        transition: all 1s; }\n\nmat-sidenav .navbar-settings .settings .dropdown-menu {\n        position: static;\n        float: right;\n        width: 100%;\n        background-color: #333;\n        box-shadow: 0px 0px 5px 0px #111;\n        margin-bottom: 20px; }\n\nmat-sidenav .navbar-settings .settings .dropdown-menu a {\n          color: #eee;\n          padding-top: 10px;\n          padding-bottom: 10px; }\n\nmat-sidenav .navbar-settings .settings .dropdown-menu a:hover, mat-sidenav .navbar-settings .settings .dropdown-menu a:focus {\n          background-color: #555; }\n\nmat-sidenav .search {\n    padding-top: 75px; }\n\nmat-sidenav .search .form-control {\n      background-color: #555;\n      color: #fff;\n      font-size: 18px;\n      padding-top: 25px;\n      padding-bottom: 25px;\n      box-shadow: -8px 0px 9px 0px #111;\n      border: none;\n      height: auto;\n      padding: 18px 20px;\n      box-sizing: border-box; }\n\nmat-sidenav .search .form-control:focus {\n        box-shadow: -8px 10px 9px 0px #111; }\n\nmat-sidenav .nav-body {\n    margin-top: 30px; }\n\nmat-sidenav .nav-body .nav-item {\n      width: 100%; }\n\nmat-sidenav .nav-body .nav-item a {\n        padding: 10px 15%;\n        width: 100%;\n        color: #ddd;\n        font-size: 16px;\n        font-weight: bold;\n        display: block; }\n\nmat-sidenav .nav-body .nav-item a:hover, mat-sidenav .nav-body .nav-item a:focus, mat-sidenav .nav-body .nav-item a.active {\n          color: #eee;\n          background-color: #222;\n          text-decoration: none; }\n\nmat-sidenav .nav-body .nav-item a .unread {\n          font-size: 22px; }\n\nmat-sidenav .nav-body .nav-item .unread {\n        width: 33px;\n        height: 33px;\n        background-color: #CB1616;\n        display: inline-block;\n        text-align: center;\n        vertical-align: middle;\n        padding-top: 0;\n        border-radius: 50%;\n        margin-left: 10px; }\n\nmat-sidenav .collapsed-nav-content {\n    position: relative;\n    height: 93vh; }\n\nmat-sidenav .footer {\n    position: absolute;\n    bottom: 20px;\n    left: 0;\n    padding: 20px;\n    font-size: 16px; }\n\nmat-sidenav .footer p a, mat-sidenav .footer p a:hover, mat-sidenav .footer p a:focus {\n      color: #566BFF; }\n\nmat-sidenav .footer > a, mat-sidenav .footer > a:focus, mat-sidenav .footer > a:hover {\n      color: #ddd;\n      text-decoration: underline; }\n\n@media screen and (max-width: 900px) {\n  mat-sidenav {\n    width: 80%; }\n    mat-sidenav .navbar-settings {\n      padding-top: 40px; }\n    mat-sidenav .search {\n      padding-top: 60px; } }\n\n@media (min-width: 901px) {\n  mat-sidenav-content {\n    margin-left: 25%; } }\n"
 
 /***/ }),
 
@@ -1080,13 +1086,16 @@ module.exports = "ul#slide-out::-webkit-scrollbar {\n  width: 0; }\n\nnav {\n  b
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _services_messages_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/messages.service */ "./src/app/services/messages.service.ts");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
+/* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm5/layout.es5.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _services_messages_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/messages.service */ "./src/app/services/messages.service.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
+/* harmony import */ var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/sidenav */ "./node_modules/@angular/material/esm5/sidenav.es5.js");
+/* harmony import */ var _services_sidenav_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../services/sidenav.service */ "./src/app/services/sidenav.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1104,40 +1113,89 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
+
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent(messagesService, auth, userService, router) {
+    function NavbarComponent(messagesService, auth, userService, router, media, sidenavService) {
         this.messagesService = messagesService;
         this.auth = auth;
         this.userService = userService;
         this.router = router;
-        this.faCog = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faCog"];
-        this.faBars = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_1__["faBars"];
+        this.media = media;
+        this.sidenavService = sidenavService;
+        this.faCog = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faCog"];
+        this.faBars = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faBars"];
+        this.smallscreen = false;
         this.avatarUrl = this.auth.avatarUrl();
     }
+    // ngAfterViewChecked() {
+    //   this.updateUnread();
+    // }
+    NavbarComponent.prototype.ngAfterViewInit = function () {
+        this.updateNavbar();
+    };
+    // ngAfterContentChecked() {
+    //   this.updateNavbar();
+    // }
     NavbarComponent.prototype.ngOnInit = function () {
+        // this.sidenavService.setSidenav(this.sidenav);
         this.updateUnread();
-        jquery__WEBPACK_IMPORTED_MODULE_2__('#collapse-toggle').click(function () {
-            if (jquery__WEBPACK_IMPORTED_MODULE_2__('#co1lapsed-nav').css('left') !== '0px') {
-                jquery__WEBPACK_IMPORTED_MODULE_2__('#co1lapsed-nav').animate({ left: 0 }, 500);
+        jquery__WEBPACK_IMPORTED_MODULE_3__('#collapse-toggle').click(function () {
+            if (jquery__WEBPACK_IMPORTED_MODULE_3__('#co1lapsed-nav').css('left') !== '0px') {
+                jquery__WEBPACK_IMPORTED_MODULE_3__('#co1lapsed-nav').animate({ left: 0 }, 500);
             }
             else {
-                jquery__WEBPACK_IMPORTED_MODULE_2__('#co1lapsed-nav').animate({ left: '-80%' }, 500);
+                jquery__WEBPACK_IMPORTED_MODULE_3__('#co1lapsed-nav').animate({ left: '-80%' }, 500);
             }
         });
-        if (jquery__WEBPACK_IMPORTED_MODULE_2__(window).height() < 500) {
-            jquery__WEBPACK_IMPORTED_MODULE_2__('.collapsed-nav-content').height(500);
+        if (jquery__WEBPACK_IMPORTED_MODULE_3__(window).height() < 500) {
+            jquery__WEBPACK_IMPORTED_MODULE_3__('.collapsed-nav-content').height(500);
         }
         else {
-            jquery__WEBPACK_IMPORTED_MODULE_2__('.collapsed-nav-content').height(jquery__WEBPACK_IMPORTED_MODULE_2__(window).height());
+            jquery__WEBPACK_IMPORTED_MODULE_3__('.collapsed-nav-content').height(jquery__WEBPACK_IMPORTED_MODULE_3__(window).height());
         }
-        jquery__WEBPACK_IMPORTED_MODULE_2__(window).resize(function () {
-            if (jquery__WEBPACK_IMPORTED_MODULE_2__(window).height() < 500) {
-                jquery__WEBPACK_IMPORTED_MODULE_2__('#collapsed-nav-content').height(500);
-            }
-            else {
-                jquery__WEBPACK_IMPORTED_MODULE_2__('#collapsed-nav-content').height(jquery__WEBPACK_IMPORTED_MODULE_2__(window).height());
-            }
-        });
+        this.updateNavbar();
+    };
+    NavbarComponent.prototype.onBackdropClick = function () {
+        this.sidenav.open();
+        console.log('ran');
+        console.log(jquery__WEBPACK_IMPORTED_MODULE_3__(window).width() <= 900);
+        if (jquery__WEBPACK_IMPORTED_MODULE_3__(window).width() <= 900) {
+            this.sidenav.close();
+        }
+        else {
+            this.sidenav.open();
+        }
+    };
+    NavbarComponent.prototype.updateHeight = function (event) {
+        this.updateNavbar();
+        if (event.target.innerHeight < 500) {
+            jquery__WEBPACK_IMPORTED_MODULE_3__('#collapsed-nav-content').height(500);
+        }
+        else {
+            jquery__WEBPACK_IMPORTED_MODULE_3__('#collapsed-nav-content').height(jquery__WEBPACK_IMPORTED_MODULE_3__(window).height());
+        }
+    };
+    NavbarComponent.prototype.onLinkClick = function () {
+        if (jquery__WEBPACK_IMPORTED_MODULE_3__(window).width() < 900) {
+            this.sidenav.close();
+        }
+        else {
+            this.sidenav.open();
+        }
+    };
+    NavbarComponent.prototype.updateNavbar = function () {
+        if (this.media.matchMedia('(min-width: 900px)').matches == true) {
+            this.smallscreen = false;
+            jquery__WEBPACK_IMPORTED_MODULE_3__('.mat-drawer-backdrop').hide();
+            this.sidenav.open();
+        }
+        else {
+            this.smallscreen = true;
+            jquery__WEBPACK_IMPORTED_MODULE_3__('.mat-drawer-backdrop').show();
+            this.sidenav.close();
+        }
     };
     NavbarComponent.prototype.updateUnread = function () {
         var _this = this;
@@ -1166,13 +1224,22 @@ var NavbarComponent = /** @class */ (function () {
             }
         }
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('sidenav'),
+        __metadata("design:type", _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_8__["MatSidenav"])
+    ], NavbarComponent.prototype, "sidenav", void 0);
     NavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-navbar',
             template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/navbar/navbar.component.html"),
             styles: [__webpack_require__(/*! ./navbar.component.scss */ "./src/app/navbar/navbar.component.scss")]
         }),
-        __metadata("design:paramtypes", [_services_messages_service__WEBPACK_IMPORTED_MODULE_3__["MessagesService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"], _services_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+        __metadata("design:paramtypes", [_services_messages_service__WEBPACK_IMPORTED_MODULE_4__["MessagesService"],
+            _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"],
+            _services_user_service__WEBPACK_IMPORTED_MODULE_7__["UserService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"],
+            _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_1__["MediaMatcher"],
+            _services_sidenav_service__WEBPACK_IMPORTED_MODULE_9__["SidenavService"]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -2023,6 +2090,61 @@ var MessagesService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/sidenav.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/sidenav.service.ts ***!
+  \*********************************************/
+/*! exports provided: SidenavService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SidenavService", function() { return SidenavService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SidenavService = /** @class */ (function () {
+    function SidenavService() {
+    }
+    SidenavService.prototype.setSidenav = function (sidenav) {
+        this.sidenav = sidenav;
+    };
+    SidenavService.prototype.open = function () {
+        return this.sidenav.open();
+    };
+    SidenavService.prototype.close = function () {
+        console.log("ran");
+        if (jquery__WEBPACK_IMPORTED_MODULE_1__(window).width() <= 900) {
+            return this.sidenav.close();
+        }
+    };
+    SidenavService.prototype.toggle = function () {
+        this.sidenav.toggle();
+    };
+    SidenavService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], SidenavService);
+    return SidenavService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/user.service.ts":
 /*!******************************************!*\
   !*** ./src/app/services/user.service.ts ***!
@@ -2143,7 +2265,7 @@ module.exports = "<div class=\"settings-container\">\n  <h3 class=\"page-title\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#flashMessages {\n  width: 300px !important;\n  margin-right: auto;\n  margin-left: auto; }\n\n.settings-container {\n  padding: 30px;\n  padding-top: 30px;\n  min-height: 500px; }\n\n.settings-container .data {\n    margin-top: 15px;\n    margin-bottom: 15px; }\n\n.settings-container .data .btn-default {\n      font-weight: bold;\n      font-size: 12px !important; }\n\n.settings-container .data .title {\n      font-weight: bold;\n      margin-right: 16px;\n      vertical-align: top; }\n\n.settings-container .data textarea {\n      padding-top: 10px !important;\n      padding-bottom: 10px !important; }\n\n.settings-container .data .form-control {\n      width: 300px !important;\n      display: inline-block !important;\n      margin-top: -10px !important; }\n\n.settings-container .data .form-controlinput {\n        box-shadow: 0px 6px 27px 8px rgba(0, 0, 0, 0.075) !important; }\n\n.settings-container .data .form-control.btn-default {\n        margin: 0 !important; }\n\n.settings-container .data .form-control.read {\n        box-shadow: none !important; }\n\n.settings-container .data .form-control.file-control {\n        font-weight: bold !important; }\n\n.settings-container .data .form-control.file-control span {\n          color: #333; }\n\n.settings-container .password-form {\n    width: 300px;\n    margin-left: 30px; }\n"
+module.exports = "#flashMessages {\n  width: 300px !important;\n  margin-right: auto;\n  margin-left: auto; }\n\n.settings-container {\n  padding: 30px;\n  padding-top: 30px;\n  min-height: 500px; }\n\n.settings-container .data {\n    margin-top: 15px;\n    margin-bottom: 15px; }\n\n.settings-container .data .btn-default {\n      font-weight: bold;\n      font-size: 12px !important; }\n\n.settings-container .data .title {\n      font-weight: bold;\n      margin-right: 16px;\n      vertical-align: top; }\n\n.settings-container .data textarea {\n      padding-top: 10px !important;\n      padding-bottom: 10px !important; }\n\n.settings-container .data .form-control {\n      width: 300px !important;\n      display: inline-block !important; }\n\n.settings-container .data .form-controlinput {\n        box-shadow: 0px 6px 27px 8px rgba(0, 0, 0, 0.075) !important; }\n\n.settings-container .data .form-control.btn-default {\n        margin: 0 !important; }\n\n.settings-container .data .form-control.read {\n        box-shadow: none !important; }\n\n.settings-container .data .form-control.file-control {\n        font-weight: bold !important; }\n\n.settings-container .data .form-control.file-control span {\n          color: #333; }\n\n.settings-container .password-form {\n    width: 300px;\n    margin-left: 30px; }\n\n@media (min-width: 901px) {\n  .data .form-control {\n    margin-top: -10px !important; } }\n\n@media (max-width: 900px) {\n  .data .form-control {\n    margin-top: 10px !important; } }\n"
 
 /***/ }),
 

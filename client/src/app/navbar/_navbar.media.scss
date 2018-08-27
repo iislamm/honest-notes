@@ -53,7 +53,7 @@
 // }
 
 @media screen and (max-width: 900px) {
-    .sidenav {
+    mat-sidenav {
         width: 80%;
 
         .navbar-settings {
@@ -63,5 +63,11 @@
         .search {
             padding-top: 60px;
         }
+    }
+}
+
+@media (min-width: 901px) {
+    mat-sidenav-content {
+        margin-left: 25%;
     }
 }

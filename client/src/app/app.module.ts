@@ -6,6 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { RouterModule, Routes } from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -71,7 +75,9 @@ export function tokenGetter() {
         blacklistedRoutes: ['localhost:4200/auth/']
       }
     }),
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    BrowserAnimationsModule,
+    MatSidenavModule
   ],
   providers: [AuthService, ValidationService],
   bootstrap: [AppComponent]

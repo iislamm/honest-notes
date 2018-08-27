@@ -3,9 +3,3 @@
         margin-left: 25%;
     }
 }
-
-@media (max-width: 900px) {
-    .page-content {
-        margin-top: 55px;
-    }
-}
