@@ -182,6 +182,9 @@ export class RegisterComponent implements OnInit {
     if (event.target.value.length > 0) {
       let colons = event.target.value.indexOf(':');
       this.birthDay = event.target.value.slice(colons + 1);
+      if (Number(this.birthDay) < 10) {
+        this.birthDay = '0' + this.birthDay;
+      }
       console.log(this.birthDay);
     } else {
       
@@ -198,12 +201,16 @@ export class RegisterComponent implements OnInit {
       let colons = event.target.value.indexOf(':');
       this.birthMonth = event.target.value.slice(colons + 1);
       console.log(this.birthMonth);
+      if (Number(this.birthMonth) < 10) {
+        this.birthMonth = '0' + this.birthMonth;
+      }
     } else {
       
     }
   }
 
   setBirthYear(event: any): void {
+    
     if (!event.target.classList.contains('validated')) {
       this.checkedFields++;
       event.target.classList.add('validated');
@@ -222,11 +229,8 @@ export class RegisterComponent implements OnInit {
   }
 
   setBirthDate(): void {
-      let birthDate = this.birthYear.concat('-', this.birthMonth, '-', this.birthDay);
+      let birthDate = this.birthYear.concat('-', this.birthMonth, '-', this.birthDay).replace(/\s/g,'') + 'T00:00:00.000Z';
       this.birthDate = new Date(birthDate);
-      console.log(this.birthDay);
-      console.log(this.birthMonth);
-      console.log(this.birthYear);
   }
 
   setGender(gender: string): void {

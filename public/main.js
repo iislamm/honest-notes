@@ -443,10 +443,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 function apiUrl() {
-    return "http://192.168.1.169:3000/";
+    return "http://honest-notes.herokuapp.com/";
 }
 function clientUrl() {
-    return "http://192.168.1.169:3000/";
+    return "http://honest-notes.herokuapp.com/";
 }
 function tokenGetter() {
     return localStorage.getItem('token');
@@ -1529,6 +1529,9 @@ var RegisterComponent = /** @class */ (function () {
         if (event.target.value.length > 0) {
             var colons = event.target.value.indexOf(':');
             this.birthDay = event.target.value.slice(colons + 1);
+            if (Number(this.birthDay) < 10) {
+                this.birthDay = '0' + this.birthDay;
+            }
             console.log(this.birthDay);
         }
         else {
@@ -1544,6 +1547,9 @@ var RegisterComponent = /** @class */ (function () {
             var colons = event.target.value.indexOf(':');
             this.birthMonth = event.target.value.slice(colons + 1);
             console.log(this.birthMonth);
+            if (Number(this.birthMonth) < 10) {
+                this.birthMonth = '0' + this.birthMonth;
+            }
         }
         else {
         }
@@ -1565,11 +1571,8 @@ var RegisterComponent = /** @class */ (function () {
         this.step = 2;
     };
     RegisterComponent.prototype.setBirthDate = function () {
-        var birthDate = this.birthYear.concat('-', this.birthMonth, '-', this.birthDay);
+        var birthDate = this.birthYear.concat('-', this.birthMonth, '-', this.birthDay).replace(/\s/g, '') + 'T00:00:00.000Z';
         this.birthDate = new Date(birthDate);
-        console.log(this.birthDay);
-        console.log(this.birthMonth);
-        console.log(this.birthYear);
     };
     RegisterComponent.prototype.setGender = function (gender) {
         if (this.genderValidated === false) {

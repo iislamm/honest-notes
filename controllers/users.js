@@ -10,7 +10,7 @@ const User = require('../models/user');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './public/data/uploads/profile-pictures');
+        cb(null, '../public/data/uploads/profile-pictures');
     },
     filename: function (req, file, cb) {
         let ext = file.originalname.split('.');
@@ -44,6 +44,7 @@ module.exports.upload = upload;
 module.exports.uploadAvatar = (req, res, next) => {
     upload(req, res, function (err) {
         if (err) {
+            console.log(err);
             // An error occurred when uploading
             return res.status(403).send({
                 message: "File has to be an image"
