@@ -66,8 +66,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         $('#co1lapsed-nav').animate({ left: '-80%' }, 500)
       }
     });
-    if ($(window).height() < 500) {
-      $('.collapsed-nav-content').height(500);
+    if ($(window).height() < 550) {
+      $('.collapsed-nav-content').height(550);
     } else {
       $('.collapsed-nav-content').height($(window).height());
     }

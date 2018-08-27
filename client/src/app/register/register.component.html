@@ -1,6 +1,6 @@
 <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
   <div class="steps">
-    <span class="step" [ngClass]="{'active': step === 1}" (click)="changeStep(1)">1</span> | <span class="step" [ngClass]="{'active': step === 2}" (click)="nextStep()">2</span>
+    <span class="step" [ngClass]="{'active': step === 1}" (click)="changeStep(1)">1</span> | <span class="step" [ngClass]="{'active': step === 2}">2</span>
   </div>
   <flash-messages></flash-messages>
   <div *ngIf="step === 1">

@@ -127,13 +127,11 @@ mat-sidenav {
         .form-control {
             background-color: #555;
             color: #fff;
-            font-size: 18px;
-            padding-top: 25px;
-            padding-bottom: 25px;
+            font-size: 16px;
             box-shadow: -8px 0px 9px 0px #111;
             border: none;
             height: auto;
-            padding: 18px 20px;
+            padding: 14px 20px;
             box-sizing: border-box;
 
             &:focus {
@@ -143,7 +141,7 @@ mat-sidenav {
     }
 
     .nav-body {
-        margin-top: 30px;
+        margin-top: 10px;
         
         .nav-item {
             // margin: 10px 0;
@@ -153,7 +151,7 @@ mat-sidenav {
                 padding: 10px $navPadding;
                 width: 100%;
                 color: #ddd;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: bold;
                 display: block;
                 &:hover, &:focus, &.active {
@@ -187,12 +185,11 @@ mat-sidenav {
         height: 93vh;
     }
     .footer {
-        position: absolute;
-        
+        position: absolute;      
         bottom: 20px;
         left: 0;
         padding: 20px;
-        font-size: 16px;
+        font-size: 14px;
         p a, p a:hover, p a:focus {
             color: $mainColor
         }

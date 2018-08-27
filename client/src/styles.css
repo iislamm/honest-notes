@@ -95,6 +95,15 @@ textarea {
     color: #999;
 }
 
+@media (max-width: 900px) {
+    .select-group label {
+        margin-right: 0;
+    }
+    .select-group .btn-default {
+        margin: auto 9px;
+    }
+}
+
 .checkbox-group .btn-default, .checkbox-group .btn-default input {
     width: 35px;
     height: 30px;
@@ -148,7 +157,7 @@ textarea {
 
   @media (max-width: 900px) {
     .lds-ellipsis {
-        left: 15%;
+        left: 10%;
     }
   }
 

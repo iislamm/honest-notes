@@ -50,6 +50,15 @@
     border: none;
 }
 
+@media (max-width: 900px) {
+    .navbar-header {
+        padding-left: 20px
+    }
+    .enter .button {
+        margin: 0 1px;
+    }
+}
+
 .modal-content {
     border-radius: 0;
 }
