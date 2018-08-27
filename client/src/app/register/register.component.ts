@@ -167,6 +167,7 @@ export class RegisterComponent implements OnInit {
   }
 
   setBirthDay(event: any): void {
+    console.log(event.target.value);
     if (!event.target.classList.contains('validated')) {
       this.checkedFields++;
       event.target.classList.add('validated');
@@ -174,6 +175,7 @@ export class RegisterComponent implements OnInit {
     if (event.target.value.length > 0) {
       let colons = event.target.value.indexOf(':');
       this.birthDay = event.target.value.slice(colons + 1);
+      console.log(this.birthDay);
     } else {
       
     }
@@ -185,8 +187,10 @@ export class RegisterComponent implements OnInit {
       event.target.classList.add('validated');
     }
     if (event.target.value.length > 0) {
+      console.log(event.target.value);
       let colons = event.target.value.indexOf(':');
       this.birthMonth = event.target.value.slice(colons + 1);
+      console.log(this.birthMonth);
     } else {
       
     }
@@ -200,6 +204,7 @@ export class RegisterComponent implements OnInit {
     if (event.target.value.length > 0) {
       let colons = event.target.value.indexOf(':');
       this.birthYear = event.target.value.slice(colons + 1);
+      console.log(this.birthYear);
     } else {
       
     }

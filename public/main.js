@@ -1513,6 +1513,7 @@ var RegisterComponent = /** @class */ (function () {
         this.updateReadyStatus();
     };
     RegisterComponent.prototype.setBirthDay = function (event) {
+        console.log(event.target.value);
         if (!event.target.classList.contains('validated')) {
             this.checkedFields++;
             event.target.classList.add('validated');
@@ -1520,6 +1521,7 @@ var RegisterComponent = /** @class */ (function () {
         if (event.target.value.length > 0) {
             var colons = event.target.value.indexOf(':');
             this.birthDay = event.target.value.slice(colons + 1);
+            console.log(this.birthDay);
         }
         else {
         }
@@ -1530,8 +1532,10 @@ var RegisterComponent = /** @class */ (function () {
             event.target.classList.add('validated');
         }
         if (event.target.value.length > 0) {
+            console.log(event.target.value);
             var colons = event.target.value.indexOf(':');
             this.birthMonth = event.target.value.slice(colons + 1);
+            console.log(this.birthMonth);
         }
         else {
         }
@@ -1544,6 +1548,7 @@ var RegisterComponent = /** @class */ (function () {
         if (event.target.value.length > 0) {
             var colons = event.target.value.indexOf(':');
             this.birthYear = event.target.value.slice(colons + 1);
+            console.log(this.birthYear);
         }
         else {
         }
