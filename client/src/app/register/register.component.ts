@@ -8,6 +8,7 @@ import { ValidationService } from '../services/validation.service';
 
 import * as $ from 'jquery';
 import { AuthService } from '../services/auth.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-register',
@@ -48,10 +49,12 @@ export class RegisterComponent implements OnInit {
   ready1: boolean;
   ready2: boolean;
 
+  done: boolean = false;
+
   //Font Awesome
   faCloudUploadAlt = faCloudUploadAlt;
   
-  constructor(private http: HttpClient, private validation: ValidationService, private auth: AuthService) {
+  constructor(private http: HttpClient, private validation: ValidationService, private auth: AuthService, private flashMessages: FlashMessagesService) {
     this.checkedFields = 0;
     this.errors = 0;
     this.genderValidated = false;
@@ -75,6 +78,10 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  changeStep(step: number): void {
+    this.step = step;
   }
 
   updateReadyStatus() {
@@ -266,7 +273,13 @@ export class RegisterComponent implements OnInit {
 
       
       this.auth.register(newUser, fd).subscribe(res => {
-        document.location.reload();
+        this.done = true;
+      }, err => {
+        if (err.error.message) {
+          this.flashMessages.show(err.error.message, {cssClass: "alert-danger", timeout: 5000});
+        } else {
+          this.flashMessages.show("Unexpected error occured. Please try again later.", {cssClass: "alert-danger", timeout: 5000});
+        }
       })
     } else {
       $('.ng-untouched').addClass('error');

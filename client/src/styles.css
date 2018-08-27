@@ -145,6 +145,13 @@ textarea {
     top: 35vh;
     left: 33%;
   }
+
+  @media (max-width: 900px) {
+    .lds-ellipsis {
+        left: 15%;
+    }
+  }
+
   .lds-ellipsis div {
     position: absolute;
     top: 27px;

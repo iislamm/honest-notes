@@ -1,6 +1,7 @@
 form {
     width: 90%;
     margin: auto;
+    position: relative;
 }
 .steps {
     text-align: center;
@@ -12,6 +13,7 @@ form {
 .step {
     margin: 0 10px;
     color: rgba(51, 51, 51, 0.6);
+    cursor: pointer;
 }
 
 .step.active {
@@ -21,4 +23,20 @@ form {
 .modal-footer {
     text-align: center;
     border: none;
+}
+
+.done {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: #fff;
+    background-color: #fff;
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    font-weight: bold;
 }

@@ -80,7 +80,8 @@ module.exports.register = (req, res, next) => {
         if (err) {
             if (err.code === 11000) {
                 //check the duplicate field
-                var field = err.message.split('index: ')[1].split('_1')[0];
+                console.log(err.message);
+                var field = err.message.split('$')[1].split('_1')[0];
 
                 res.status(403).send({
                     code: 11000,

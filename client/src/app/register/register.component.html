@@ -1,8 +1,8 @@
 <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
   <div class="steps">
-    <span class="step" [ngClass]="{'active': step === 1}">1</span> | <span class="step" [ngClass]="{'active': step === 2}">2</span>
+    <span class="step" [ngClass]="{'active': step === 1}" (click)="changeStep(1)">1</span> | <span class="step" [ngClass]="{'active': step === 2}" (click)="nextStep()">2</span>
   </div>
-
+  <flash-messages></flash-messages>
   <div *ngIf="step === 1">
     <div class="form-group">
       <input type="text" (keyup)="textValidation($event, 4)" ([ngModel])="fullname" formControlName="fullname" class="form-control" placeholder="Full name" required minlength="4">
@@ -72,5 +72,7 @@
         <button type="submit" class="btn btn-default">Sign Up</button>
       </div>
     </div>
-
+    <div class="done" *ngIf="done === true">
+      <h3>Wohooo! You can now sign in to Honest-Notes.</h3>
+    </div>
 </form>
