@@ -24,11 +24,11 @@ export class AuthService {
 
   avatarUrl(): string {
     let user = JSON.parse(localStorage.getItem('user'));
-    return `./data/uploads/profile-pictures/${user._id}.jpg`;
+    return `http://islamelbanna.info/honest-notes/uploads/${user._id}.jpg`;
   }
 
   customAvatarUrl(id): string {
-    return `./data/uploads/profile-pictures/${id}.jpg`;
+    return `http://islamelbanna.info/honest-notes/uploads/${id}.jpg`;
   }
 
   getUser(id: string): Observable<any> {
@@ -53,7 +53,10 @@ export class AuthService {
     let token = this.getToken();
     let headers = new HttpHeaders({'Authorization': token});
     return this.http.get(`${url}users/loginhistory`, {headers: headers}).pipe(
-      map(res => res)
+      map(res => res),
+      tap(res => {
+        localStorage.setItem('loginHistory', res);
+      })
     );
   }
 
@@ -105,7 +108,7 @@ export class AuthService {
   }
 
   setAvatar(fd: FormData, id: string): Observable<any> {
-    return this.http.put(`${url}users/${id}/avatar`, fd).pipe(
+    return this.http.post(`http://islamelbanna.info/honest-notes/upload.php/?name=${id}`, fd).pipe(
       map(res => res),
       tap(res => {
           console.log(res);

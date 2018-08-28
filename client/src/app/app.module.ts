@@ -33,11 +33,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 
 export function apiUrl() {
-  return "http://honest-notes.herokuapp.com/";
+  return "https://honest-notes.herokuapp.com/";
 }
 
 export function clientUrl() {
-  return "http://honest-notes.herokuapp.com/";
+  return "https://honest-notes.herokuapp.com/";
 }
 
 export function tokenGetter() {

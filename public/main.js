@@ -443,10 +443,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 function apiUrl() {
-    return "http://honest-notes.herokuapp.com/";
+    return "https://honest-notes.herokuapp.com/";
 }
 function clientUrl() {
-    return "http://honest-notes.herokuapp.com/";
+    return "https://honest-notes.herokuapp.com/";
 }
 function tokenGetter() {
     return localStorage.getItem('token');
@@ -1738,7 +1738,7 @@ module.exports = "<div class=\"cards-container\">\r\n  <div *ngIf=\"results.leng
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "img {\n  width: 60px;\n  display: inline-block;\n  border-radius: 50%; }\n\n.title {\n  display: inline-block;\n  margin-left: 25px; }\n\na, a:hover, a:focus, a:active, a:visited {\n  color: inherit; }\n"
+module.exports = "img {\n  width: 60px;\n  height: 60px;\n  display: inline-block;\n  border-radius: 50%; }\n\n.title {\n  display: inline-block;\n  margin-left: 25px; }\n\na, a:hover, a:focus, a:active, a:visited {\n  color: inherit; }\n"
 
 /***/ }),
 
@@ -1859,10 +1859,10 @@ var AuthService = /** @class */ (function () {
     }
     AuthService.prototype.avatarUrl = function () {
         var user = JSON.parse(localStorage.getItem('user'));
-        return "./data/uploads/profile-pictures/" + user._id + ".jpg";
+        return "http://islamelbanna.info/honest-notes/uploads/" + user._id + ".jpg";
     };
     AuthService.prototype.customAvatarUrl = function (id) {
-        return "./data/uploads/profile-pictures/" + id + ".jpg";
+        return "http://islamelbanna.info/honest-notes/uploads/" + id + ".jpg";
     };
     AuthService.prototype.getUser = function (id) {
         return this.http.get(url + "users/find/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }));
@@ -1876,7 +1876,9 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.getLoginHistory = function () {
         var token = this.getToken();
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Authorization': token });
-        return this.http.get(url + "users/loginhistory", { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }));
+        return this.http.get(url + "users/loginhistory", { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (res) {
+            localStorage.setItem('loginHistory', res);
+        }));
     };
     AuthService.prototype.saveUser = function (res) {
         localStorage.setItem('token', res.token);
@@ -1914,7 +1916,7 @@ var AuthService = /** @class */ (function () {
         return this.http.post(url + "auth/login/email", user, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }));
     };
     AuthService.prototype.setAvatar = function (fd, id) {
-        return this.http.put(url + "users/" + id + "/avatar", fd).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (res) {
+        return this.http.post("http://islamelbanna.info/honest-notes/upload.php/?name=" + id, fd).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (res) {
             console.log(res);
         }));
     };
@@ -2437,7 +2439,7 @@ module.exports = "<div *ngIf=\"ready === true && loading === false\">\n  <div cl
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".background {\n  height: 200px;\n  width: 100%;\n  background-color: #556BFF; }\n\n.profile {\n  margin-top: -100px;\n  margin-left: auto;\n  margin-right: auto;\n  width: 75%; }\n\n.profile img {\n    width: 200px;\n    border-radius: 50%; }\n\n.profile .name {\n    font-weight: bold;\n    font-size: 32px;\n    margin-top: 10px; }\n\n.profile textarea {\n    margin-bottom: 20px;\n    resize: none; }\n\n.not-found {\n  margin-top: 10%; }\n\n.not-found h3 {\n    font-size: 12em; }\n"
+module.exports = ".background {\n  height: 200px;\n  width: 100%;\n  background-color: #556BFF; }\n\n.profile {\n  margin-top: -100px;\n  margin-left: auto;\n  margin-right: auto;\n  width: 75%; }\n\n.profile img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%; }\n\n.profile .name {\n    font-weight: bold;\n    font-size: 32px;\n    margin-top: 10px; }\n\n.profile textarea {\n    margin-bottom: 20px;\n    resize: none; }\n\n.not-found {\n  margin-top: 10%; }\n\n.not-found h3 {\n    font-size: 12em; }\n"
 
 /***/ }),
 
