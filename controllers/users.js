@@ -4,7 +4,7 @@ const request = require('request');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const shortid = require('shortid');
-// const mailController = require('./mailer');
+const mailController = require('./mailer');
 
 const User = require('../models/user');
 
@@ -38,8 +38,6 @@ var upload = multer({
         next(err);
     }
 }).single('avatar');
-
-module.exports.upload = upload;
 
 module.exports.uploadAvatar = (req, res, next) => {
     upload(req, res, function (err) {
@@ -99,10 +97,8 @@ module.exports.register = (req, res, next) => {
             }
 
         } else {
-            res.status(201).send({
-                message: "User successfully registered",
-                id: data._id
-            });
+            mailController.activation(data);
+            res.redirect('/');
         }
     });
 
@@ -316,9 +312,9 @@ module.exports.sendForget = (req, res, next) => {
         }
     }).then(doc => {
         User.findOne({
-            email: req.body.emai
+            email: req.body.email
         }).then(user => {
-            mailController(doc);
+            mailController.forget(doc);
             res.status(200).send({
                 message: "Code sent to user's email"
             })
