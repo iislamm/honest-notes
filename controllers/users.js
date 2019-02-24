@@ -98,7 +98,10 @@ module.exports.register = (req, res, next) => {
 
         } else {
             mailController.activation(data);
-            res.redirect('/');
+            res.status(201).send({
+                message: "User successfully registered",
+                id: data._id
+            });
         }
     });
 
