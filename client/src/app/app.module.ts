@@ -33,7 +33,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 
 export function apiUrl() {
-  return "https://honest-notes.herokuapp.com/";
+  // return "https://honest-notes.herokuapp.com/";
+  return "http://localhost:3000/";
 }
 
 export function clientUrl() {

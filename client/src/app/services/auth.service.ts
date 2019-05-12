@@ -99,7 +99,6 @@ export class AuthService {
   }
 
   logIn(user: OldUser): Observable<any> {
-    console.log('service submit');
     let headers = new HttpHeaders;
     headers.append('Content-Type', 'application/json');
     return this.http.post(`${url}auth/login/email`, user, {headers: headers}).pipe(
