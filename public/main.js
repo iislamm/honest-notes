@@ -442,8 +442,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 function apiUrl() {
-    // return "https://honest-notes.herokuapp.com/";
-    return "http://localhost:3000/";
+    return "https://honest-notes.herokuapp.com/";
+    // return "http://localhost:3000/";
 }
 function clientUrl() {
     return "https://honest-notes.herokuapp.com/";
@@ -1859,10 +1859,10 @@ var AuthService = /** @class */ (function () {
     }
     AuthService.prototype.avatarUrl = function () {
         var user = JSON.parse(localStorage.getItem('user'));
-        return "http://islamelbanna.info/honest-notes/uploads/" + user._id + ".jpg";
+        return "https://islamelbanna.info/honest-notes/uploads/" + user._id + ".jpg";
     };
     AuthService.prototype.customAvatarUrl = function (id) {
-        return "http://islamelbanna.info/honest-notes/uploads/" + id + ".jpg";
+        return "https://islamelbanna.info/honest-notes/uploads/" + id + ".jpg";
     };
     AuthService.prototype.getUser = function (id) {
         return this.http.get(url + "users/find/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }));
@@ -1915,7 +1915,7 @@ var AuthService = /** @class */ (function () {
         return this.http.post(url + "auth/login/email", user, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }));
     };
     AuthService.prototype.setAvatar = function (fd, id) {
-        return this.http.post("http://islamelbanna.info/honest-notes/upload.php/?name=" + id, fd).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (res) {
+        return this.http.post("https://islamelbanna.info/honest-notes/upload.php/?name=" + id, fd).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (res) {
             console.log(res);
         }));
     };

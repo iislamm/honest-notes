@@ -125,5 +125,10 @@
     "@schematics/angular:component": {
       "styleext": "scss"
     }
+  },
+  "cli": {
+    "warnings": {
+      "versionMismatch": false
+    }
   }
 }
