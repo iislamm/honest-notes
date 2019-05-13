@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FlashMessagesModule } from 'angular2-flash-messages';
-import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -34,8 +33,8 @@ import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule, MatGridListModule, MatInputModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 
 export function apiUrl() {
-  return "https://honest-notes.herokuapp.com/";
-  // return "http://localhost:3000/";
+  // return "https://honest-notes.herokuapp.com/";
+  return "http://localhost:3000/";
 }
 
 export function clientUrl() {
