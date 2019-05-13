@@ -3,44 +3,52 @@
   <div class="text-center">
     <flash-messages></flash-messages>
   </div>
-  <div class="col-sm-6">
-    <div class="data">
-      <span class="title">Name: </span>
-      <input type="text" class="form-control read" name="fullname" [(ngModel)]="fullname" >
-    </div>
-    <div class="data">
-      <span class="title">E-mail: </span>
-      <input type="text" class="form-control read" [(ngModel)]="email">
-    </div>
-    <div class="data">
-      <span class="title">Bio: </span>
-      <textarea class="form-control read" rows="2" [(ngModel)]="bio" placeholder="Tap to add bio"></textarea>
-    </div>
-  </div>
-  
-  <div class="col-sm-6">
-
-    <div class="data">
-      <div class="btn-default form-control" (click)="onChangePasswordClick()">Change Password</div>
-    </div>
-
-    <div class="password-form" *ngIf="changePassword === true">
-      <div class="form-group">
-        <input [(ngModel)]="currentPassword" type="password" name="current-password" id="current-password" class="form-control" placeholder="Current password">
-      </div>
-
-      <div class="form-group">
-        <input [(ngModel)]="newPassword" type="password" name="new-password" id="new-password" class="form-control" placeholder="New password">
-      </div>
-
-        <div class="form-group">
-          <input [(ngModel)]="verifyPassword" type="password" name="verify-password" id="verify-password" class="form-control" placeholder="Verify password">
+  <mat-card style="min-height: 400px">
+      <mat-card-content>
+        
+        <div class="col-sm-6">
+          <div class="data">
+            <mat-form-field class="full-width">
+              <input matInput type="text" class="read" name="fullname" [(ngModel)]="fullname" placeholder="Full Name">
+            </mat-form-field>
+          </div>
+          <div class="data">
+            <mat-form-field class="full-width">
+              <input matInput type="email" class="read" [(ngModel)]="email" placeholder="Email">
+            </mat-form-field>
+          </div>
+          <div class="data">
+            <mat-form-field class="full-width">
+              <textarea matInput class="read" rows="2" [(ngModel)]="bio" placeholder="Bio"></textarea>
+            </mat-form-field>
+          </div>
         </div>
-    </div>
-  </div>
+        
+        <div class="col-sm-6">
+      
+          <div class="data">
+            <button mat-raised-button style="width:100%" (click)="onChangePasswordClick()">Change Password</button>
+          </div>
+      
+          <div class="password-form" *ngIf="changePassword === true">
+            <div class="form-group">
+              <input [(ngModel)]="currentPassword" type="password" name="current-password" id="current-password" class="form-control" placeholder="Current password">
+            </div>
+      
+            <div class="form-group">
+              <input [(ngModel)]="newPassword" type="password" name="new-password" id="new-password" class="form-control" placeholder="New password">
+            </div>
+      
+              <div class="form-group">
+                <input [(ngModel)]="verifyPassword" type="password" name="verify-password" id="verify-password" class="form-control" placeholder="Verify password">
+              </div>
+          </div>
+        </div>
+      </mat-card-content>
+  </mat-card>
   
 </div>
 
 <div class="text-center">
-  <button class="btn-default" (click)="onSave()">Save</button>
+  <button mat-raised-button (click)="onSave()">Save</button>
 </div>

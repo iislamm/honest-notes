@@ -68,7 +68,7 @@
     border: none;
 }
 
-#loginModal .modalBtn {
+/* #loginModal .modalBtn {
     background-color: transparent;
     border: none;
     color: #333;
@@ -78,15 +78,19 @@
     letter-spacing: 1px;
     color: rgba(51, 51, 51, 0.7);
     outline: none;
-}
+} */
 
-#loginModal .modalBtn:last-child {
+/* #loginModal .modalBtn:last-child {
     float: right;
-}
+} */
 
-#loginModal .modalBtn.active {
+#loginModal button.active {
     color: rgb(51, 51, 51);
     border-bottom: 3px solid #566BFF;
+}
+
+.mat-button:last-child {
+    float: right;
 }
 
 .modal-footer {

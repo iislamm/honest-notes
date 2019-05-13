@@ -2,10 +2,13 @@
   <div *ngIf="results.length != 0">
 		<div *ngFor="let user of results">
 			<a href="{{clientUrl}}{{user.username}}">
-				<div class="card">
-					<img src="{{user.avatarUrl}}" alt="{{user.fullname}}">
-					<div class="title">{{user.fullname}}</div>
-				</div>
+				<mat-card>
+					<mat-card-header>
+						<img mat-card-avatar src="{{user.avatarUrl}}" alt="{{user.fullname}}">
+						<mat-card-title>{{user.fullname}}</mat-card-title>
+						<mat-card-subtitle>{{user.username}}</mat-card-subtitle>
+					</mat-card-header>
+				</mat-card>
 			</a>
 		</div>
 	</div>

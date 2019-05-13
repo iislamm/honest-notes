@@ -1,21 +1,25 @@
 <div class="cards-container" *ngIf="ready === true">
-  <div class="status text-center">
+  <div class="status text-center mat-display-1">
     <span [ngClass]="{'active': status === 'recieved'}" (click)="changeStatus('recieved')">Recieved</span> | <span [ngClass]="{'active': status === 'sent'}" (click)="changeStatus('sent')">Sent</span>
   </div>
 
   <div *ngIf="status === 'recieved'" class="recieved">
-    <div class="card" *ngFor="let message of recieved">
-      <div class="content">{{message.content}}</div>
-      <div class="date">{{message.sendDate.slice(0,-9).replace('T', ' at ')}}</div>
-    </div>
+      <mat-card *ngFor="let message of recieved" role="group">
+          <mat-card-content>
+              <p>{{message.content}}</p>
+              <p class="mat-caption">{{message.sendDate.slice(0,-9).replace('T', ' at ')}}</p>
+          </mat-card-content>
+      </mat-card>
   </div>
 
   <div *ngIf="status === 'sent'" class="sent">
-    <div class="card" *ngFor="let message of sent">
-      <div class="content">{{message.content}}</div>
-      <div class="date">To: {{message.recieverName}}</div>
-      <div class="date">{{message.sendDate.slice(0,-9).replace('T', ' at ')}}</div>
-    </div>
+      <mat-card *ngFor="let message of sent" role="group">
+        <mat-card-content>
+            <p>{{message.content}}</p>
+            <p class="mat-caption">To: {{message.recieverName}}</p>
+            <p class="mat-caption">{{message.sendDate.slice(0,-9).replace('T', ' at ')}}</p>
+        </mat-card-content>
+    </mat-card>
   </div>
 </div>
 

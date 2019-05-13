@@ -24,13 +24,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { RoutingModule } from './routing/routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
-import { CardsComponent } from './cards/cards.component';
 import { MessagesComponent } from './messages/messages.component';
 import { SearchComponent } from './search/search.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
+import { MatCardModule} from '@angular/material/card';
+import { MatButtonModule, MatGridListModule, MatInputModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 
 export function apiUrl() {
   return "https://honest-notes.herokuapp.com/";
@@ -53,7 +54,6 @@ export function tokenGetter() {
     RegisterComponent,
     DashboardComponent,
     NavbarComponent,
-    CardsComponent,
     MessagesComponent,
     SearchComponent,
     UserDetailsComponent,
@@ -78,7 +78,13 @@ export function tokenGetter() {
     }),
     FlashMessagesModule.forRoot(),
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCardModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [AuthService, ValidationService],
   bootstrap: [AppComponent]

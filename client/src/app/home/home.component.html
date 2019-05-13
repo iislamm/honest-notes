@@ -39,8 +39,8 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button (click)="setStatus('login')" [ngClass]="{'active': status === 'login'}" class="modalBtn">Sign in</button>
-          <button (click)="setStatus('register')" [ngClass]="{'active': status === 'register'}"  class="modalBtn">Sign up</button>
+          <button (click)="setStatus('login')" [ngClass]="{'active': status === 'login'}" mat-button>Sign in</button>
+          <button (click)="setStatus('register')" [ngClass]="{'active': status === 'register'}" mat-button>Sign up</button>
         </div>
         <div class="modal-body">
           <app-login *ngIf="status === 'login'"></app-login>

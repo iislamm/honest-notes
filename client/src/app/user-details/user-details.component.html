@@ -4,7 +4,13 @@
     <img src="{{avatarUrl}}" alt="{{user.fullname}}">
     <p class="name">{{user.fullname}}</p>
     <flash-messages></flash-messages>
-    <textarea [(ngModel)]="message" rows="5" class="form-control" placeholder="Write {{user.fullname.slice(0, user.fullname.indexOf(' '))}} a meessage"></textarea>
+    <mat-card>
+      <mat-card-content>
+          <mat-form-field class="full-width">
+            <textarea [(ngModel)]="message" rows="5" class="form-control" placeholder="Write {{user.fullname.slice(0, user.fullname.indexOf(' '))}} a meessage"></textarea>
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
     <button (click)="sendMessage()" class="btn-default">Send</button>
 
   </div>
