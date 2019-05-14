@@ -10,7 +10,7 @@
 
     <mat-form-field class="full-width">
       <input type="email" ([ngModel])="email" (blur)="emailValidation($event)" (keyup)="emailValidation($event)" formControlName="email" matInput placeholder="E-mail" required minlength="4">
-    </mat-form-field>>
+    </mat-form-field>
 
     <mat-form-field class="full-width">
       <input type="password" (keyup)="textValidation($event, 6)" ([ngModel])="password" formControlName="password" matInput placeholder="Password" required minlength="8">

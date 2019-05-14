@@ -8,8 +8,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MatSidenavModule} from '@angular/material/sidenav';
-
+import * as firebase from 'firebase/app';
 
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -31,7 +30,9 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { MatCardModule} from '@angular/material/card';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule, MatGridListModule, MatInputModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
+import { environment } from 'src/environments/environment';
 
 export function apiUrl() {
   return "https://honest-notes.herokuapp.com/";
@@ -45,6 +46,18 @@ export function clientUrl() {
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
+
+const firebaseConfig = {
+  apiKey: environment.apiKey,
+  authDomain: environment.authDomain,
+  databaseURL: environment.databaseURL,
+  projectId: environment.projectId,
+  storageBucket: "honest-notes.appspot.com",
+  messagingSenderId: environment.messagingSenderId,
+  appId: environment.appId
+};
+
+firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [

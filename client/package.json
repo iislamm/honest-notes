@@ -28,6 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.2.0",
     "angular2-flash-messages": "^2.0.5",
     "core-js": "^2.5.4",
+    "firebase": "^6.0.2",
     "jquery": "^3.4.1",
     "moment-timezone": "^0.5.21",
     "npm": "^6.9.0",

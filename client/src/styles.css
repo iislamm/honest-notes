@@ -109,6 +109,10 @@ textarea {
     color: #999;
 }
 
+.mat-card {
+  margin-bottom: 20px;
+}
+
 @media (max-width: 900px) {
     .select-group label {
         margin-right: 0;
