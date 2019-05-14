@@ -8,6 +8,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { User, OldUser, newUser } from '../user';
 
 import { apiUrl } from '../app.module';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
 const url = apiUrl();
 
 @Injectable({
@@ -24,11 +26,11 @@ export class AuthService {
 
   avatarUrl(): string {
     let user = JSON.parse(localStorage.getItem('user'));
-    return `https://islamelbanna.info/honest-notes/uploads/${user._id}.jpg`;
+    return `https://firebasestorage.googleapis.com/v0/b/honest-notes.appspot.com/o/${user._id}.jpg?alt=media&token=2095d0b1-5ba1-42ab-8229-93ac86a3eb1b`;
   }
 
   customAvatarUrl(id): string {
-    return `https://islamelbanna.info/honest-notes/uploads/${id}.jpg`;
+    return `https://firebasestorage.googleapis.com/v0/b/honest-notes.appspot.com/o/${id}.jpg?alt=media&token=2095d0b1-5ba1-42ab-8229-93ac86a3eb1b`;
   }
 
   getUser(id: string): Observable<any> {
@@ -106,13 +108,14 @@ export class AuthService {
     )
   }
 
-  setAvatar(fd: FormData, id: string): Observable<any> {
-    return this.http.post(`https://islamelbanna.info/honest-notes/upload.php/?name=${id}`, fd).pipe(
-      map(res => res),
-      tap(res => {
-          console.log(res);
-      })
-    )
+  setAvatar(fd: FormData, id: string): void {
+    const storageRef = firebase.storage().ref();
+    const avatarRef = storageRef.child(id + ".jpg");
+    console.log(fd);
+    avatarRef.put(fd.get('avatar')).then(snapshot => {
+      console.log(snapshot);
+    }).catch(error => console.log(error));
+
   }
 
   register(newUser: newUser, fd: FormData): Observable<any> {
@@ -121,7 +124,7 @@ export class AuthService {
     return this.http.post<Object>(`${url}users/register`, newUser ).pipe(
       map(res => res),
       tap(res => {
-        this.setAvatar(fd, res.id).subscribe();
+        this.setAvatar(fd, res.id);
       })
     )
   }

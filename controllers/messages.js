@@ -55,6 +55,7 @@ module.exports.newMessage = (req, res, next) => {
 }
 
 module.exports.getUserInbox = (req, res, next) => {
+    console.log("reached here");
     Message.find({reciever: req.user._id}).sort({sendDate: -1}).select("-sender").then(messages => {
         res.status(200).send({messages: messages});
     }).catch(err => {

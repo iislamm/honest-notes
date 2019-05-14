@@ -32,9 +32,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
 
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
